@@ -5,8 +5,19 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        akaya: ["Akaya Kanadaka"],
+      },
+    },
   },
+  mode: 'jit',
+  darkMode: "class",
   plugins: [],
+  daisyui: {
+    themes: [ "cupcake"],
+  },
 }
+
+
 
