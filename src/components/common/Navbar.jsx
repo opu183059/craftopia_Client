@@ -30,11 +30,11 @@ const Navbar = () => {
               Menu
             </button>
             {isDropdownOpen && (
-              <div className="absolute mt-2 py-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+              <div className="absolute mt-4 z-10 py-2 w-48 bg-slate-50 dark:bg-gray-800 rounded-lg shadow-lg">
                 <NavLink
                   className={({ isActive }) =>
                     isActive
-                      ? " text-amber-800 dark:text-amber-500 font-bold block px-4 py-2 hover:bg-gray-200"
+                      ? " text-blue-700 dark:text-blue-400 font-bold block px-4 py-2 hover:bg-gray-200"
                       : "block px-4 py-2 text-gray-800 dark:text-slate-100 dark:hover:text-gray-800 hover:bg-gray-200"
                   }
                   to="/"
@@ -44,7 +44,17 @@ const Navbar = () => {
                 <NavLink
                   className={({ isActive }) =>
                     isActive
-                      ? " text-amber-800 dark:text-amber-500 font-bold block px-4 py-2 hover:bg-gray-200"
+                      ? " text-blue-700 dark:text-blue-400 font-bold block px-4 py-2 hover:bg-gray-200"
+                      : "block px-4 py-2 text-gray-800 dark:text-slate-100 dark:hover:text-gray-800 hover:bg-gray-200"
+                  }
+                  to="/login"
+                >
+                  Login
+                </NavLink>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive
+                      ? " text-blue-700 dark:text-blue-400 font-bold block px-4 py-2 hover:bg-gray-200"
                       : "block px-4 py-2 text-gray-800 dark:text-slate-100 dark:hover:text-gray-800 hover:bg-gray-200"
                   }
                   to="/instructor"
@@ -54,7 +64,7 @@ const Navbar = () => {
                 <NavLink
                   className={({ isActive }) =>
                     isActive
-                      ? " text-amber-800 dark:text-amber-500 font-bold block px-4 py-2 hover:bg-gray-200"
+                      ? " text-blue-700 dark:text-blue-400 font-bold block px-4 py-2 hover:bg-gray-200"
                       : "block px-4 py-2 text-gray-800 dark:text-slate-100 dark:hover:text-gray-800 hover:bg-gray-200"
                   }
                   to="/classes"
@@ -64,7 +74,7 @@ const Navbar = () => {
                 <NavLink
                   className={({ isActive }) =>
                     isActive
-                      ? " text-amber-800 dark:text-amber-500 font-bold block px-4 py-2 hover:bg-gray-200"
+                      ? " text-blue-700 dark:text-blue-400 font-bold block px-4 py-2 hover:bg-gray-200"
                       : "block px-4 py-2 text-gray-800 dark:text-slate-100 dark:hover:text-gray-800 hover:bg-gray-200"
                   }
                   to="/dashboard"
@@ -94,29 +104,34 @@ const Navbar = () => {
               </div>
             )}
           </div>
-          <div className="text-black dark:text-white font-bold text-xl">
-            My Website
+          <div className="flex items-center gap-2 text-blue-700 dark:text-blue-400 font-bold text-xl">
+            <img
+              src="https://i.ibb.co/GVKwXgL/Colorful-Cute-Butterfly-and-Paint-Brush-Illustration-Local-Artist-Community-Logo-removebg-preview.png"
+              alt=""
+              className="w-10 "
+            />
+            <h1 className="font-akaya text-3xl">CraftoPia</h1>
           </div>
-          <div className="darkSwitch hidden md:block md:flex gap-2">
+          <div className="darkSwitch hidden md:flex gap-2">
+            <BsPersonCircle size={30}></BsPersonCircle>
             <label
               htmlFor="Toggle1"
               className="inline-flex items-center space-x-4 cursor-pointer text-gray-900 dark:text-white"
             >
-              <span className="relative">
+              <span className="relative border-[2px] dark:border-slate-100 border-black rounded-md p-1">
                 <input
                   onClick={() => setTheme(!theme)}
                   id="Toggle1"
                   type="checkbox"
-                  className="hidden peer"
+                  className="hidden"
                 />
                 {!theme ? (
-                  <BsFillMoonFill size={25}></BsFillMoonFill>
+                  <BsFillMoonFill size={20}></BsFillMoonFill>
                 ) : (
-                  <BsFillSunFill size={25}></BsFillSunFill>
+                  <BsFillSunFill size={20}></BsFillSunFill>
                 )}
               </span>
             </label>
-            <BsPersonCircle size={30}></BsPersonCircle>
           </div>
         </div>
       </nav>
