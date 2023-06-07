@@ -2,17 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-.swiper {
-}
-
 .swiper-slide {
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.swiper-slide img {
 }
 
 .autoplay-progress {
@@ -43,4 +37,32 @@
   stroke-dashoffset: calc(125.6 * (1 - var(--progress)));
   stroke-dasharray: 125.6;
   transform: rotate(-90deg);
+}
+
+.extrasection .swiper {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.extrasection .swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 300px;
+}
+
+.extrasection .swiper-slide img {
+  display: block;
+  width: 100%;
+}
+
+.extrasection .swiper-button-prev {
+  display: none !important;
+}
+.extrasection .swiper-button-next {
+  display: none !important;
+}
+.extrasection .autoplay-progress {
+  display: none;
 }

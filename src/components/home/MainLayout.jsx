@@ -1,4 +1,5 @@
 import Banner from "./Banner";
+import Extrasection from "./Extrasection";
 
 const MainLayout = () => {
   return (
@@ -8,6 +9,7 @@ const MainLayout = () => {
       <h1>This is home</h1>
       <h1>This is home</h1>
       <Banner></Banner>
+      <Extrasection></Extrasection>
     </div>
   );
 };
