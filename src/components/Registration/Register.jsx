@@ -1,26 +1,145 @@
+import { useContext } from "react";
 import { Fade, Slide } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
+import { Authcontext } from "../Provider/Authprovider";
+import Swal from "sweetalert2";
+import { getAuth, updateProfile } from "firebase/auth";
 
 const Register = () => {
+  const { registerUser, user, logout, signinwithGoogle } =
+    useContext(Authcontext);
+  // console.log(user);
+  const auth = getAuth();
+  const handleRegistration = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const photo = form.photo.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(name, photo, email, password);
+
+    if (!name) {
+      Swal.fire({
+        icon: "error",
+        title: "Name Missing",
+        text: "Please give a User Name",
+      });
+      return;
+    }
+    if (!email) {
+      Swal.fire({
+        icon: "error",
+        title: "Email ID missing",
+        text: "Please give a valid email id",
+      });
+      return;
+    }
+    if (!password) {
+      Swal.fire({
+        icon: "error",
+        title: "Password Missing",
+        text: "PLease set the passwords",
+      });
+      return;
+    }
+    if (password.length < 8) {
+      Swal.fire({
+        icon: "error",
+        title: "Week Password",
+        text: "Password should be minimum 8 character",
+      });
+      return;
+    }
+    if (!photo) {
+      Swal.fire({
+        icon: "error",
+        title: "Photo Missing",
+        text: "PLease give the photo URL",
+      });
+      return;
+    }
+    if ((email, password)) {
+      registerUser(email, password)
+        .then((result) => {
+          const loggedUser = result.user;
+          Swal.fire({
+            icon: "success",
+            title: "Congratulations",
+            text: "Account Created Successfully goto login",
+          });
+
+          updateProfile(auth.currentUser, {
+            displayName: name,
+            photoURL: photo,
+          })
+            .then(() => {})
+            .catch((error) => {
+              console.log(error);
+            });
+          console.log(loggedUser);
+          form.reset();
+          logout()
+            .then(() => {})
+            .catch((error) => {
+              console.log(error);
+            });
+        })
+        .catch((error) => {
+          let errrormessage = error?.code?.split("auth/")[1];
+          console.log(errrormessage);
+        });
+    }
+  };
+
+  const googleLogin = () => {
+    signinwithGoogle()
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  console.log(user);
+
   return (
     <div className="pt-24 bg-slate-50 dark:bg-gray-800">
-      <div className="container mx-auto flex flex-col-reverse md:flex-row md:flex-row-reverse gap-5 py-6">
-        <Slide direction="right" className="w-full md:w-6/12">
+      <div className="container mx-auto flex flex-col-reverse md:flex-row-reverse gap-5 py-6">
+        <Slide className="w-full md:w-6/12">
           <img
             src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
             className="w-full"
             alt="Phone image"
           />
         </Slide>
-        <Fade delay={500} className="w-full md:w-6/12">
+        <Fade className="w-full md:w-6/12">
           <div className="md:w-10/12 mx-auto w-full p-8 space-y-3 rounded-xl bg-blue-950 dark:bg-blue-950 text-gray-100 dark:text-gray-100">
             <h1 className="text-2xl font-bold text-center">Register</h1>
             <form
-              //   onSubmit={handleLogin}
+              onSubmit={handleRegistration}
               noValidate=""
               action=""
               className="space-y-6 ng-untouched ng-pristine ng-valid"
             >
+              <div className="relative z-0 w-full mb-6 group">
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  placeholder=" "
+                  required
+                />
+                <label
+                  htmlFor="name"
+                  className="peer-focus:font-medium absolute text-sm text-gray-50 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                >
+                  Name
+                </label>
+              </div>
+
               <div className="relative z-0 w-full mb-6 group">
                 <input
                   type="email"
@@ -28,13 +147,28 @@ const Register = () => {
                   id="email"
                   className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder=" "
-                  required
                 />
                 <label
                   htmlFor="email"
-                  className="peer-focus:font-medium absolute text-sm text-gray-50 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                 >
                   Email
+                </label>
+              </div>
+              <div className="relative z-0 w-full mb-6 group">
+                <input
+                  type="text"
+                  name="photo"
+                  id="photo"
+                  className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  placeholder=" "
+                  required
+                />
+                <label
+                  htmlFor="photo"
+                  className="peer-focus:font-medium absolute text-sm text-gray-50 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                >
+                  Photo
                 </label>
               </div>
               <div className="space-y-1 text-sm">
@@ -56,8 +190,9 @@ const Register = () => {
                 </div>
               </div>
               <button className="block w-auto rounded-md px-4 py-2 text-center text-slate-100 font-semibold bg-blue-600 hover:border-blue-600 border border-blue-950 ">
-                Log in
+                Register
               </button>
+
               <div className="errorMessage">
                 <p className="text-rose-600">error</p>
               </div>
@@ -71,7 +206,7 @@ const Register = () => {
             </div>
             <div className="flex justify-center space-x-4">
               <button
-                // onClick={googleLogin}
+                onClick={googleLogin}
                 aria-label="Login with Google"
                 type="button"
                 className="flex items-center justify-center w-60 p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 border-gray-400 dark:border-gray-400 hover:bg-blue-600 hover:text-white hover:border-gray-300"

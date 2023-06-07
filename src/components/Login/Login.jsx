@@ -1,8 +1,26 @@
+import { useContext } from "react";
 import { Fade, Slide } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
+import { Authcontext } from "../Provider/Authprovider";
 
 const Login = () => {
-  console.log(import.meta.env.VITE_TEST);
+  const { signinwithGoogle } = useContext(Authcontext);
+  // console.log(import.meta.env.VITE_TEST);
+
+  const googleLogin = () => {
+    signinwithGoogle()
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const handleLogin = (event) => {
+    event.preventDefault();
+    console.log("Clicked");
+  };
+
   return (
     <div className="pt-24 bg-slate-50 dark:bg-gray-800">
       <div className="container mx-auto flex flex-col-reverse md:flex-row gap-5 py-6">
@@ -17,7 +35,7 @@ const Login = () => {
           <div className="md:w-10/12 mx-auto w-full p-8 space-y-3 rounded-xl bg-blue-950 dark:bg-blue-950 text-gray-100 dark:text-gray-100">
             <h1 className="text-2xl font-bold text-center">Login</h1>
             <form
-              //   onSubmit={handleLogin}
+              onSubmit={handleLogin}
               noValidate=""
               action=""
               className="space-y-6 ng-untouched ng-pristine ng-valid"
@@ -72,7 +90,7 @@ const Login = () => {
             </div>
             <div className="flex justify-center space-x-4">
               <button
-                // onClick={googleLogin}
+                onClick={googleLogin}
                 aria-label="Login with Google"
                 type="button"
                 className="flex items-center justify-center w-60 p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 border-gray-400 dark:border-gray-400 hover:bg-blue-600 hover:text-white hover:border-gray-300"
