@@ -7,14 +7,14 @@ import { getAuth, updateProfile } from "firebase/auth";
 import { useForm } from "react-hook-form";
 
 const Register = () => {
-  const { registerUser, user, logout, signinwithGoogle } =
-    useContext(Authcontext);
+  const { registerUser, logout, signinwithGoogle } = useContext(Authcontext);
   // console.log(user);
   const auth = getAuth();
   const saveUser = (user) => {
     const currentUser = {
       email: user.email,
       name: user.displayName,
+      role: "User",
     };
     fetch(`http://localhost:5000/users/${user?.email}`, {
       method: "PUT",
@@ -33,7 +33,7 @@ const Register = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
     const { name, email, password, confpassword, photo } = data;
     if (!name) {
       Swal.fire({
@@ -86,21 +86,25 @@ const Register = () => {
     if ((email, password)) {
       registerUser(email, password)
         .then((result) => {
-          const loggedUser = result.user;
+          // const loggedUser = result.user.email;
+          // console.log(loggedUser);
           Swal.fire({
             icon: "success",
             title: "Congratulations",
             text: "Account Created Successfully goto login",
           });
-
+          saveUser(result.user);
           updateProfile(auth.currentUser, {
             displayName: name,
             photoURL: photo,
           })
-            .then(() => {})
+            .then((result) => {
+              console.log(result);
+            })
             .catch((error) => {
               console.log(error);
             });
+
           // console.log(loggedUser);
           logout()
             .then(() => {})

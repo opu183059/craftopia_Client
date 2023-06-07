@@ -7,7 +7,7 @@ import { Link, NavLink } from "react-router-dom";
 import { Authcontext } from "../Provider/Authprovider";
 
 const Navbar = () => {
-  const { user } = useContext(Authcontext);
+  const { user, logout } = useContext(Authcontext);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [theme, setTheme] = useState(false);
   if (theme) {
@@ -18,6 +18,16 @@ const Navbar = () => {
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleLogout = () => {
+    logout()
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <>
@@ -116,7 +126,21 @@ const Navbar = () => {
           </div>
           <div className="darkSwitch hidden md:flex gap-2">
             {user ? (
-              <BsPersonCircle size={30}></BsPersonCircle>
+              <button className="flex items-center">
+                {user.photoURL ? (
+                  <div className="w-8 h-8 rounded mr-2">
+                    <img src={user.photoURL} />
+                  </div>
+                ) : (
+                  <BsPersonCircle size={30}></BsPersonCircle>
+                )}
+                <button
+                  onClick={handleLogout}
+                  className="bg-transparent hover:bg-blue-700 text-blue-600 hover:text-white rounded shadow hover:shadow-lg py-1 px-3 border border-blue-600 hover:border-transparent"
+                >
+                  Logout
+                </button>
+              </button>
             ) : (
               <Link
                 to={"/login"}

@@ -8,6 +8,8 @@ import Login from "./components/Login/Login.jsx";
 import Register from "./components/Registration/Register.jsx";
 import Authprovider from "./components/Provider/Authprovider.jsx";
 import ErrorPage from "./components/common/ErrorPage.jsx";
+import Dashboard from "./components/Dashboard/Dashboard.jsx";
+import Allusers from "./components/Dashboard/Allusers.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +28,16 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: "/dashboard/allusers",
+        element: <Allusers></Allusers>,
       },
     ],
   },
