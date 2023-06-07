@@ -1,17 +1,18 @@
+import { Fade, Slide } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
     <div className="pt-24 bg-slate-50 dark:bg-gray-800">
       <div className="container mx-auto flex flex-col-reverse md:flex-row gap-5 py-6">
-        <div className="w-full md:w-6/12">
+        <Slide className="w-full md:w-6/12">
           <img
             src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
             className="w-full"
             alt="Phone image"
           />
-        </div>
-        <div className="w-full md:w-6/12">
+        </Slide>
+        <Fade delay={500} className="w-full md:w-6/12">
           <div className="md:w-10/12 mx-auto w-full p-8 space-y-3 rounded-xl bg-blue-950 dark:bg-blue-950 text-gray-100 dark:text-gray-100">
             <h1 className="text-2xl font-bold text-center">Login</h1>
             <form
@@ -95,7 +96,7 @@ const Login = () => {
               </Link>
             </p>
           </div>
-        </div>
+        </Fade>
       </div>
     </div>
   );
