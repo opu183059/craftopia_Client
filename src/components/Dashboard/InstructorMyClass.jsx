@@ -32,6 +32,7 @@ const InstructorMyClass = () => {
                 <th className="p-3">Image</th>
                 <th className="p-3">Name</th>
                 <th className="p-3">Price</th>
+                <th className="p-3">Enroled</th>
                 <th className="p-3">Available</th>
                 <th className="p-3">Status</th>
                 <th className="p-3">Action</th>

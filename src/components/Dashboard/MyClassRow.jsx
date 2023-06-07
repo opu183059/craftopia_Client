@@ -49,6 +49,9 @@ const MyClassRow = ({ classes, index }) => {
           <p>{price}</p>
         </td>
         <td className="p-3">
+          <p>47</p>
+        </td>
+        <td className="p-3">
           <p>{available}</p>
         </td>
         <td className="p-3">
