@@ -1,22 +1,75 @@
 import { useContext } from "react";
 import { Authcontext } from "../Provider/Authprovider";
+import Swal from "sweetalert2";
 
 const InstructorAddClass = () => {
   const { user } = useContext(Authcontext);
-  console.log(user);
+  //   console.log(user);
+
+  const addClass = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const classname = form.classname.value;
+    const instructorName = form.instructorName.value;
+    const instructoremail = form.instructoremail.value;
+    const price = form.price.value;
+    const available = form.available.value;
+    const description = form.description.value;
+
+    // console.log(
+    //   classname,
+    //   instructorName,
+    //   instructoremail,
+    //   price,
+    //   available,
+    //   description
+    // );
+
+    const data = {
+      classname,
+      instructorName,
+      instructoremail,
+      price,
+      available,
+      description,
+    };
+    console.log(data);
+
+    fetch("http://localhost:5000/addClass", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        // console.log(result);
+        if (result.insertedId) {
+          Swal.fire({
+            icon: "success",
+            title: "Class added",
+            text: "PLease fill the form again to add more Class",
+          });
+        }
+      });
+    console.log(data);
+    form.reset();
+  };
+
   return (
     <section className="p-6 bg-gray-800 text-gray-50">
       <form
+        onSubmit={addClass}
         noValidate=""
         action=""
         className="container flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid"
       >
         <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-gray-900">
           <div className="space-y-2 col-span-full lg:col-span-1">
-            <p className="font-medium text-lg underline">Toy information</p>
+            <p className="font-medium text-lg underline">Class information</p>
             <p className="text-sm">
-              Please add the information about your toy. Try to give details
-              description to make your toy attractive.
+              Please add the information about your Class. Try to give details
+              description to make your Class attractive for the students and
+              guardians.
             </p>
           </div>
           <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
@@ -26,7 +79,8 @@ const InstructorAddClass = () => {
               </label>
               <input
                 required
-                id="toyname"
+                id="classname"
+                name="className"
                 type="text"
                 placeholder="Toy Name"
                 className="h-9 ps-3 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-400 dark:border-gray-700 text-gray-900"
@@ -43,27 +97,29 @@ const InstructorAddClass = () => {
             </div>
             <div className="col-span-full sm:col-span-3">
               <label htmlFor="sellerName" className="text-sm">
-                Seller Name
+                Instructor Name
               </label>
               <input
                 readOnly
                 defaultValue={user?.displayName}
-                id="sellerName"
+                id="instructorName"
+                name="instructorName"
                 type="text"
-                placeholder="Seller Name"
+                placeholder=" "
                 className="w-full h-9 ps-3 rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-border-gray-700 text-gray-900"
               />
             </div>
             <div className="col-span-full sm:col-span-3">
               <label htmlFor="sellerEmail" className="text-sm">
-                Seller Email
+                Instructor Email
               </label>
               <input
                 readOnly
                 defaultValue={user?.email}
                 id="sellerEmail"
+                name="instructoremail"
                 type="email"
-                placeholder="Seller Email "
+                placeholder=" "
                 className="w-full h-9 ps-3 rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-400 dark:border-gray-700 text-gray-900"
               />
             </div>
@@ -80,8 +136,9 @@ const InstructorAddClass = () => {
               </label>
               <input
                 required
-                id="Price"
+                id="price"
                 type="number"
+                name="price"
                 placeholder="Price"
                 className="h-9 ps-3 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-400 dark:border-gray-700 text-gray-900"
               />
@@ -94,6 +151,7 @@ const InstructorAddClass = () => {
               <input
                 required
                 id="Available"
+                name="available"
                 type="number"
                 placeholder="Total Available"
                 className="h-9 ps-3 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-400 dark:border-gray-700 text-gray-900"
@@ -106,6 +164,7 @@ const InstructorAddClass = () => {
               <textarea
                 rows={5}
                 id="description"
+                name="description"
                 type="text"
                 placeholder="Description"
                 className="textarea w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-400 dark:border-gray-700 text-gray-900 ps-2"

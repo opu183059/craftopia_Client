@@ -11,7 +11,7 @@ const Sidebar = () => {
   const handleToggle = () => {
     setActive(!isActive);
   };
-  console.log(role);
+  // console.log(role);
   return (
     <>
       <div className="bg-gray-100 text-gray-800 flex justify-between md:hidden">
