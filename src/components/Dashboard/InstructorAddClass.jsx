@@ -6,15 +6,66 @@ const InstructorAddClass = () => {
   const { user } = useContext(Authcontext);
   //   console.log(user);
 
+  const imageUpload = async (image) => {
+    const formData = new FormData();
+    formData.append("image", image);
+    const url = `https://api.imgbb.com/1/upload?key=${
+      import.meta.env.VITE_IMGBB
+    }`;
+    const response = await fetch(url, {
+      method: "POST",
+      body: formData,
+    });
+    const data = await response.json();
+    return data;
+  };
+
   const addClass = (event) => {
     event.preventDefault();
     const form = event.target;
     const classname = form.classname.value;
     const instructorName = form.instructorName.value;
     const instructoremail = form.instructoremail.value;
-    const price = form.price.value;
-    const available = form.available.value;
+    const price = parseFloat(form.price.value);
+    const available = parseInt(form.available.value);
     const description = form.description.value;
+
+    const imageLink = form.image.files[0];
+
+    imageUpload(imageLink)
+      .then((data) => {
+        // console.log(data.data.display_url);
+        const classData = {
+          classname,
+          instructorName,
+          instructoremail,
+          price,
+          available,
+          description,
+          image: data.data.display_url,
+          status: "pending",
+        };
+        fetch("http://localhost:5000/addClass", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(classData),
+        })
+          .then((res) => res.json())
+          .then((result) => {
+            // console.log(result);
+            if (result.insertedId) {
+              Swal.fire({
+                icon: "success",
+                title: "Class added",
+                text: "PLease fill the form again to add more Class",
+              });
+            }
+          });
+        //   console.log(classData);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
 
     // console.log(
     //   classname,
@@ -25,34 +76,39 @@ const InstructorAddClass = () => {
     //   description
     // );
 
-    const data = {
-      classname,
-      instructorName,
-      instructoremail,
-      price,
-      available,
-      description,
-    };
-    console.log(data);
+    // const data = {
+    //   classname,
+    //   instructorName,
+    //   instructoremail,
+    //   price,
+    //   available,
+    //   description,
+    //   image,
+    // };
+    // console.log(data);
 
-    fetch("http://localhost:5000/addClass", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        // console.log(result);
-        if (result.insertedId) {
-          Swal.fire({
-            icon: "success",
-            title: "Class added",
-            text: "PLease fill the form again to add more Class",
-          });
-        }
-      });
-    console.log(data);
+    // fetch("http://localhost:5000/addClass", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify(data),
+    // })
+    //   .then((res) => res.json())
+    //   .then((result) => {
+    //     // console.log(result);
+    //     if (result.insertedId) {
+    //       Swal.fire({
+    //         icon: "success",
+    //         title: "Class added",
+    //         text: "PLease fill the form again to add more Class",
+    //       });
+    //     }
+    //   });
+    // console.log(data);
     form.reset();
+  };
+
+  const img = (img) => {
+    console.log(img);
   };
 
   return (
@@ -91,7 +147,11 @@ const InstructorAddClass = () => {
                 Class Image
               </label>
               <input
+                onChange={(event) => {
+                  img(event.target.files[0]);
+                }}
                 type="file"
+                name="image"
                 className="file-input file-input-bordered w-full max-w-xs"
               />
             </div>
