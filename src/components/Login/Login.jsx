@@ -2,10 +2,32 @@ import { useContext } from "react";
 import { Fade, Slide } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
 import { Authcontext } from "../Provider/Authprovider";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
-  const { signinwithGoogle } = useContext(Authcontext);
+  const { signinwithGoogle, emailLogin } = useContext(Authcontext);
   // console.log(import.meta.env.VITE_TEST);
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+    const { email, password } = data;
+    emailLogin(email, password)
+      .then((result) => {
+        // eslint-disable-next-line no-unused-vars
+        const loggedInUser = result.user;
+        console.log(loggedInUser);
+      })
+      .catch((error) => {
+        console.log(error);
+        let errrormessage = error.code.split("auth/")[1];
+        console.log(errrormessage);
+      });
+  };
 
   const googleLogin = () => {
     signinwithGoogle()
@@ -15,10 +37,6 @@ const Login = () => {
       .catch((error) => {
         console.log(error);
       });
-  };
-  const handleLogin = (event) => {
-    event.preventDefault();
-    console.log("Clicked");
   };
 
   return (
@@ -35,13 +53,14 @@ const Login = () => {
           <div className="md:w-10/12 mx-auto w-full p-8 space-y-3 rounded-xl bg-blue-950 dark:bg-blue-950 text-gray-100 dark:text-gray-100">
             <h1 className="text-2xl font-bold text-center">Login</h1>
             <form
-              onSubmit={handleLogin}
+              onSubmit={handleSubmit(onSubmit)}
               noValidate=""
               action=""
               className="space-y-6 ng-untouched ng-pristine ng-valid"
             >
               <div className="relative z-0 w-full mb-6 group">
                 <input
+                  {...register("email", { required: true })}
                   type="email"
                   name="email"
                   id="email"
@@ -59,6 +78,7 @@ const Login = () => {
               <div className="space-y-1 text-sm">
                 <div className="relative z-0 w-full mb-6 group">
                   <input
+                    {...register("password", { required: true })}
                     type="password"
                     name="password"
                     id="password"

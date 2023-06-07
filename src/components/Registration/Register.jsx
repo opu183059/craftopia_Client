@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 import { Authcontext } from "../Provider/Authprovider";
 import Swal from "sweetalert2";
 import { getAuth, updateProfile } from "firebase/auth";
+import { useForm } from "react-hook-form";
 
 const Register = () => {
   const { registerUser, user, logout, signinwithGoogle } =
     useContext(Authcontext);
   // console.log(user);
   const auth = getAuth();
-
   const saveUser = (user) => {
     const currentUser = {
       email: user.email,
@@ -26,17 +26,15 @@ const Register = () => {
       .then((res) => res.json())
       .then((data) => console.log(data));
   };
-
-  const handleRegistration = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const name = form.name.value;
-    const photo = form.photo.value;
-    const email = form.email.value;
-    const password = form.password.value;
-    const confpassword = form.confpassword.value;
-    console.log(name, photo, email, password, confpassword);
-
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+    const { name, email, password, confpassword, photo } = data;
     if (!name) {
       Swal.fire({
         icon: "error",
@@ -103,8 +101,7 @@ const Register = () => {
             .catch((error) => {
               console.log(error);
             });
-          console.log(loggedUser);
-          form.reset();
+          // console.log(loggedUser);
           logout()
             .then(() => {})
             .catch((error) => {
@@ -117,6 +114,7 @@ const Register = () => {
         });
     }
   };
+  // test
 
   const googleLogin = () => {
     signinwithGoogle()
@@ -128,7 +126,7 @@ const Register = () => {
         console.log(error);
       });
   };
-  console.log(user);
+  // console.log(user);
   return (
     <div className="pt-24 bg-slate-50 dark:bg-gray-800">
       <div className="container mx-auto flex flex-col-reverse md:flex-row-reverse gap-5 py-6">
@@ -143,13 +141,14 @@ const Register = () => {
           <div className="md:w-10/12 mx-auto w-full p-8 space-y-3 rounded-xl bg-blue-950 dark:bg-blue-950 text-gray-100 dark:text-gray-100">
             <h1 className="text-2xl font-bold text-center">Register</h1>
             <form
-              onSubmit={handleRegistration}
+              onSubmit={handleSubmit(onSubmit)}
               noValidate=""
               action=""
               className="space-y-6 ng-untouched ng-pristine ng-valid"
             >
               <div className="relative z-0 w-full mb-6 group">
                 <input
+                  {...register("name", { required: true })}
                   type="text"
                   name="name"
                   id="name"
@@ -167,6 +166,7 @@ const Register = () => {
 
               <div className="relative z-0 w-full mb-6 group">
                 <input
+                  {...register("email", { required: true })}
                   type="email"
                   name="email"
                   id="email"
@@ -182,6 +182,7 @@ const Register = () => {
               </div>
               <div className="relative z-0 w-full mb-6 group">
                 <input
+                  {...register("photo", { required: true })}
                   type="text"
                   name="photo"
                   id="photo"
@@ -199,6 +200,7 @@ const Register = () => {
               <div className="space-y-1 text-sm">
                 <div className="relative z-0 w-full mb-6 group">
                   <input
+                    {...register("password", { required: true })}
                     type="password"
                     name="password"
                     id="password"
@@ -217,6 +219,7 @@ const Register = () => {
               <div className="space-y-1 text-sm">
                 <div className="relative z-0 w-full mb-6 group">
                   <input
+                    {...register("confpassword", { required: true })}
                     type="password"
                     name="confpassword"
                     id="confpassword"
