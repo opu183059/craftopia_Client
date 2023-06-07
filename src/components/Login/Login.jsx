@@ -2,6 +2,7 @@ import { Fade, Slide } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+  console.log(import.meta.env.VITE_TEST);
   return (
     <div className="pt-24 bg-slate-50 dark:bg-gray-800">
       <div className="container mx-auto flex flex-col-reverse md:flex-row gap-5 py-6">
