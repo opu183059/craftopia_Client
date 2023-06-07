@@ -74,7 +74,7 @@ const Login = () => {
                   </label>
                 </div>
               </div>
-              <button className="block w-auto rounded-md px-4 py-2 text-center text-slate-100 font-semibold bg-blue-600 hover:border-blue-600 border border-blue-950 ">
+              <button className="block w-auto rounded-md px-4 py-2 text-center text-slate-100 hover:scale-105 transition-all bg-blue-600 hover:border-blue-600 border border-blue-950 ">
                 Log in
               </button>
               <div className="errorMessage">

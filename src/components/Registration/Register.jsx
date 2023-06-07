@@ -10,6 +10,23 @@ const Register = () => {
     useContext(Authcontext);
   // console.log(user);
   const auth = getAuth();
+
+  const saveUser = (user) => {
+    const currentUser = {
+      email: user.email,
+      name: user.displayName,
+    };
+    fetch(`http://localhost:5000/users/${user?.email}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(currentUser),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  };
+
   const handleRegistration = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -17,7 +34,8 @@ const Register = () => {
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, photo, email, password);
+    const confpassword = form.confpassword.value;
+    console.log(name, photo, email, password, confpassword);
 
     if (!name) {
       Swal.fire({
@@ -48,6 +66,14 @@ const Register = () => {
         icon: "error",
         title: "Week Password",
         text: "Password should be minimum 8 character",
+      });
+      return;
+    }
+    if (password != confpassword) {
+      Swal.fire({
+        icon: "error",
+        title: "Password Missatched",
+        text: "Please use same password on both fields",
       });
       return;
     }
@@ -95,26 +121,25 @@ const Register = () => {
   const googleLogin = () => {
     signinwithGoogle()
       .then((result) => {
+        saveUser(result.user);
         console.log(result.user);
       })
       .catch((error) => {
         console.log(error);
       });
   };
-
   console.log(user);
-
   return (
     <div className="pt-24 bg-slate-50 dark:bg-gray-800">
       <div className="container mx-auto flex flex-col-reverse md:flex-row-reverse gap-5 py-6">
-        <Slide className="w-full md:w-6/12">
+        <Slide direction="right" className="w-full md:w-6/12 z-0">
           <img
             src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
             className="w-full"
             alt="Phone image"
           />
         </Slide>
-        <Fade className="w-full md:w-6/12">
+        <Fade delay={500} className="w-full md:w-6/12 z-10">
           <div className="md:w-10/12 mx-auto w-full p-8 space-y-3 rounded-xl bg-blue-950 dark:bg-blue-950 text-gray-100 dark:text-gray-100">
             <h1 className="text-2xl font-bold text-center">Register</h1>
             <form
@@ -150,7 +175,7 @@ const Register = () => {
                 />
                 <label
                   htmlFor="email"
-                  className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  className="peer-focus:font-medium absolute text-sm text-gray-50 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                 >
                   Email
                 </label>
@@ -189,7 +214,25 @@ const Register = () => {
                   </label>
                 </div>
               </div>
-              <button className="block w-auto rounded-md px-4 py-2 text-center text-slate-100 font-semibold bg-blue-600 hover:border-blue-600 border border-blue-950 ">
+              <div className="space-y-1 text-sm">
+                <div className="relative z-0 w-full mb-6 group">
+                  <input
+                    type="password"
+                    name="confpassword"
+                    id="confpassword"
+                    className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" "
+                    required
+                  />
+                  <label
+                    htmlFor="confpassword"
+                    className="peer-focus:font-medium absolute text-sm text-gray-50 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  >
+                    Confirm Password
+                  </label>
+                </div>
+              </div>
+              <button className="block w-auto rounded-md px-4 py-2 text-center text-slate-100 hover:scale-105 transition-all bg-blue-600 hover:border-blue-600 border border-blue-950 ">
                 Register
               </button>
 

@@ -7,12 +7,13 @@ import MainLayout from "./components/home/MainLayout.jsx";
 import Login from "./components/Login/Login.jsx";
 import Register from "./components/Registration/Register.jsx";
 import Authprovider from "./components/Provider/Authprovider.jsx";
+import ErrorPage from "./components/common/ErrorPage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
-    errorElement: <h1>Error</h1>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",

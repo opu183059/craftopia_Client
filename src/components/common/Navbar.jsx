@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { BiAlignLeft } from "react-icons/bi";
 import { BsPersonCircle } from "react-icons/bs";
 import { BsFillMoonFill } from "react-icons/bs";
 import { BsFillSunFill } from "react-icons/bs";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { Authcontext } from "../Provider/Authprovider";
 
 const Navbar = () => {
+  const { user } = useContext(Authcontext);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [theme, setTheme] = useState(false);
   if (theme) {
@@ -19,7 +21,7 @@ const Navbar = () => {
   };
   return (
     <>
-      <nav className="fixed w-full shadow-md mx-auto bg-slate-50 dark:bg-gray-800 p-4 z-10">
+      <nav className="fixed w-full shadow-md mx-auto bg-slate-50 dark:bg-gray-800 p-4 z-50">
         <div className="container mx-auto flex justify-between items-center">
           <div>
             <button
@@ -113,7 +115,16 @@ const Navbar = () => {
             <h1 className="font-akaya text-3xl">CraftoPia</h1>
           </div>
           <div className="darkSwitch hidden md:flex gap-2">
-            <BsPersonCircle size={30}></BsPersonCircle>
+            {user ? (
+              <BsPersonCircle size={30}></BsPersonCircle>
+            ) : (
+              <Link
+                to={"/login"}
+                className="bg-transparent hover:bg-blue-700 text-blue-600 hover:text-white rounded shadow hover:shadow-lg py-1 px-3 border border-blue-600 hover:border-transparent"
+              >
+                login
+              </Link>
+            )}
             <label
               htmlFor="Toggle1"
               className="inline-flex items-center space-x-4 cursor-pointer text-gray-900 dark:text-white"
