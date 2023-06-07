@@ -29,6 +29,7 @@ const InstructorMyClass = () => {
             <thead className="dark:bg-gray-700">
               <tr className="text-left">
                 <th className="p-3">#</th>
+                <th className="p-3">Image</th>
                 <th className="p-3">Name</th>
                 <th className="p-3">Price</th>
                 <th className="p-3">Available</th>
