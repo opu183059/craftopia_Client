@@ -10,6 +10,9 @@ import Authprovider from "./components/Provider/Authprovider.jsx";
 import ErrorPage from "./components/common/ErrorPage.jsx";
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
 import Allusers from "./components/Dashboard/Allusers.jsx";
+import Classes from "./components/Dashboard/Classes.jsx";
+import InstructorAddClass from "./components/Dashboard/InstructorAddClass.jsx";
+import InstructorMyClass from "./components/Dashboard/InstructorMyClass.jsx";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +41,18 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/allusers",
         element: <Allusers></Allusers>,
+      },
+      {
+        path: "/dashboard/classes",
+        element: <Classes></Classes>,
+      },
+      {
+        path: "/dashboard/addClass",
+        element: <InstructorAddClass></InstructorAddClass>,
+      },
+      {
+        path: "/dashboard/myclass",
+        element: <InstructorMyClass></InstructorMyClass>,
       },
     ],
   },

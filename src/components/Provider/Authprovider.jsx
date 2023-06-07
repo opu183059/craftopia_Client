@@ -17,6 +17,13 @@ const googleProvider = new GoogleAuthProvider();
 const Authprovider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [role, setRole] = useState(null);
+
+  const getRoleFromServer = async (email) => {
+    const response = await fetch(`http://localhost:5000/usermail/${email}`);
+    const user = await response.json();
+    return user?.role;
+  };
 
   // register
   const registerUser = (email, password) => {
@@ -47,6 +54,12 @@ const Authprovider = ({ children }) => {
     };
   }, []);
 
+  useEffect(() => {
+    if (user) {
+      getRoleFromServer(user.email).then((res) => setRole(res));
+    }
+  }, [user]);
+
   const autherinfo = {
     user,
     loading,
@@ -54,6 +67,7 @@ const Authprovider = ({ children }) => {
     registerUser,
     emailLogin,
     logout,
+    role,
   };
   return (
     <Authcontext.Provider value={autherinfo}>{children}</Authcontext.Provider>

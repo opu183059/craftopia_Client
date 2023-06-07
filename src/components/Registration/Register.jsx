@@ -14,7 +14,7 @@ const Register = () => {
     const currentUser = {
       email: user.email,
       name: user.displayName,
-      role: "User",
+      role: "Student",
     };
     fetch(`http://localhost:5000/users/${user?.email}`, {
       method: "PUT",

@@ -1,33 +1,19 @@
+import { useState } from "react";
 import Swal from "sweetalert2";
 
 const Usersrow = ({ user, index }) => {
   const { _id, email, role } = user || {};
+  const [ibtn, setIbtn] = useState(false);
+  const [abtn, setAbtn] = useState(false);
 
-  const makeUser = (email) => {
-    console.log("clicked" + email);
-    Swal.fire({
-      icon: "success",
-      title: "Congratulations",
-      text: "The person is User now",
-    });
-    const currentUser = {
-      role: "User",
-    };
-    return fetch(`http://localhost:5000/users/${email}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(currentUser),
-    }).then((res) => res.json());
-  };
   const makeInstructor = (email) => {
-    console.log("clicked" + email);
-    Swal.fire({
-      icon: "success",
-      title: "Congratulations",
-      text: "The person is Instructor now",
-    });
+    // console.log("clicked" + email);
+    setIbtn(true),
+      Swal.fire({
+        icon: "success",
+        title: "Congratulations",
+        text: "The person is Instructor now",
+      });
     const currentUser = {
       role: "Instructor",
     };
@@ -41,11 +27,12 @@ const Usersrow = ({ user, index }) => {
   };
   const makeAdmin = (email) => {
     console.log("clicked" + email);
-    Swal.fire({
-      icon: "success",
-      title: "Congratulations",
-      text: "The person is Admin now",
-    });
+    setAbtn(true),
+      Swal.fire({
+        icon: "success",
+        title: "Congratulations",
+        text: "The person is Admin now",
+      });
     const currentUser = {
       role: "Admin",
     };
@@ -100,15 +87,10 @@ const Usersrow = ({ user, index }) => {
         </td>
         <td className="p-3 flex gap-1">
           <button
-            className="bg-transparent hover:bg-blue-700 text-blue-600 hover:text-white rounded shadow hover:shadow-lg py-1 px-3 border border-blue-600 hover:border-transparent"
-            onClick={() => {
-              makeUser(email);
-            }}
-          >
-            User
-          </button>
-          <button
-            className="bg-transparent hover:bg-blue-700 text-blue-600 hover:text-white rounded shadow hover:shadow-lg py-1 px-3 border border-blue-600 hover:border-transparent"
+            disabled={ibtn}
+            className={`bg-transparent ${
+              ibtn ? "hover:bg-red-700" : "hover:bg-blue-700"
+            } hover:bg-blue-700 text-blue-600 hover:text-white rounded shadow hover:shadow-lg py-1 px-3 border border-blue-600 hover:border-transparent`}
             onClick={() => {
               makeInstructor(email);
             }}
@@ -116,7 +98,10 @@ const Usersrow = ({ user, index }) => {
             Instructor
           </button>
           <button
-            className="bg-transparent hover:bg-blue-700 text-blue-600 hover:text-white rounded shadow hover:shadow-lg py-1 px-3 border border-blue-600 hover:border-transparent"
+            disabled={abtn}
+            className={`bg-transparent ${
+              abtn ? "hover:bg-red-700" : "hover:bg-blue-700"
+            } hover:bg-blue-700 text-blue-600 hover:text-white rounded shadow hover:shadow-lg py-1 px-3 border border-blue-600 hover:border-transparent`}
             onClick={() => {
               makeAdmin(email);
             }}
