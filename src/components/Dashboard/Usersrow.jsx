@@ -66,8 +66,6 @@ const Usersrow = ({ user, index }) => {
             if (data.deletedCount > 0) {
               Swal.fire("Deleted!", "Your file has been deleted.", "success");
             }
-            // const restData = myToys.filter((t) => t._id !== _id);
-            // setmyToys(restData);
           });
       }
     });
@@ -89,7 +87,7 @@ const Usersrow = ({ user, index }) => {
           <button
             disabled={ibtn}
             className={`bg-transparent ${
-              ibtn ? "hover:bg-red-700" : "hover:bg-blue-700"
+              ibtn ? "hover:bg-red-700 bg-red-700" : "hover:bg-blue-700"
             } hover:bg-blue-700 text-blue-600 hover:text-white rounded shadow hover:shadow-lg py-1 px-3 border border-blue-600 hover:border-transparent`}
             onClick={() => {
               makeInstructor(email);
@@ -100,7 +98,7 @@ const Usersrow = ({ user, index }) => {
           <button
             disabled={abtn}
             className={`bg-transparent ${
-              abtn ? "hover:bg-red-700" : "hover:bg-blue-700"
+              abtn ? "hover:bg-red-700 bg-red-700" : "hover:bg-blue-700"
             } hover:bg-blue-700 text-blue-600 hover:text-white rounded shadow hover:shadow-lg py-1 px-3 border border-blue-600 hover:border-transparent`}
             onClick={() => {
               makeAdmin(email);

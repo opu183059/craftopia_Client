@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Fade, Slide } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
 import { Authcontext } from "../Provider/Authprovider";
@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 
 const Login = () => {
   const { signinwithGoogle, emailLogin } = useContext(Authcontext);
+  const [errMgs, setErrMgs] = useState("");
   // console.log(import.meta.env.VITE_TEST);
   const {
     register,
@@ -25,7 +26,7 @@ const Login = () => {
       .catch((error) => {
         console.log(error);
         let errrormessage = error.code.split("auth/")[1];
-        console.log(errrormessage);
+        setErrMgs(errrormessage);
       });
   };
 
@@ -98,7 +99,7 @@ const Login = () => {
                 Log in
               </button>
               <div className="errorMessage">
-                <p className="text-rose-600">error</p>
+                <p className="text-rose-600">{errMgs}</p>
               </div>
             </form>
             <div className="flex items-center pt-4 space-x-1">
