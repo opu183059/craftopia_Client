@@ -1,12 +1,15 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Fade, Slide } from "react-awesome-reveal";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Authcontext } from "../Provider/Authprovider";
 import { useForm } from "react-hook-form";
 
 const Login = () => {
-  const { signinwithGoogle, emailLogin } = useContext(Authcontext);
+  const { signinwithGoogle, emailLogin, user } = useContext(Authcontext);
   const [errMgs, setErrMgs] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   // console.log(import.meta.env.VITE_TEST);
   const {
     register,
@@ -39,6 +42,12 @@ const Login = () => {
         console.log(error);
       });
   };
+
+  useEffect(() => {
+    if (user) {
+      navigate(from);
+    }
+  }, [user]);
 
   return (
     <div className="pt-24 bg-slate-50 dark:bg-gray-800">

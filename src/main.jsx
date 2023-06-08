@@ -13,6 +13,7 @@ import Allusers from "./components/Dashboard/Allusers.jsx";
 import Classes from "./components/Dashboard/Classes.jsx";
 import InstructorAddClass from "./components/Dashboard/InstructorAddClass.jsx";
 import InstructorMyClass from "./components/Dashboard/InstructorMyClass.jsx";
+import Privateroute from "./components/Privateroute/Privateroute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -36,8 +37,16 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard></Dashboard>,
+    element: (
+      <Privateroute>
+        <Dashboard></Dashboard>
+      </Privateroute>
+    ),
     children: [
+      {
+        path: "/dashboard",
+        element: <Allusers></Allusers>,
+      },
       {
         path: "/dashboard/allusers",
         element: <Allusers></Allusers>,

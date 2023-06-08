@@ -3,13 +3,14 @@ import { BiAlignLeft } from "react-icons/bi";
 import { BsPersonCircle } from "react-icons/bs";
 import { BsFillMoonFill } from "react-icons/bs";
 import { BsFillSunFill } from "react-icons/bs";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { Authcontext } from "../Provider/Authprovider";
 
 const Navbar = () => {
   const { user, logout } = useContext(Authcontext);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [theme, setTheme] = useState(false);
+  const navigate = useNavigate();
   if (theme) {
     document.documentElement.classList.add("dark");
   } else {
