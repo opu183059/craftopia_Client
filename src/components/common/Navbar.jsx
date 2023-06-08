@@ -133,7 +133,7 @@ const Navbar = () => {
                     <img src={user.photoURL} />
                   </div>
                 ) : (
-                  <BsPersonCircle size={30}></BsPersonCircle>
+                  <BsPersonCircle size={30} className="mr-2"></BsPersonCircle>
                 )}
                 <button
                   onClick={handleLogout}

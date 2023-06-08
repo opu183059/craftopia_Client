@@ -60,7 +60,7 @@ const Login = () => {
           />
         </Slide>
         <Fade delay={500} className="w-full md:w-6/12">
-          <div className="md:w-10/12 mx-auto w-full p-8 space-y-3 rounded-xl bg-blue-950 dark:bg-blue-950 text-gray-100 dark:text-gray-100">
+          <div className="md:w-10/12 mx-auto w-full p-8 space-y-3 rounded-xl bg-blue-800 dark:bg-blue-950 text-gray-100 dark:text-gray-100">
             <h1 className="text-2xl font-bold text-center">Login</h1>
             <form
               onSubmit={handleSubmit(onSubmit)}

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Fade, Slide } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
 import { Authcontext } from "../Provider/Authprovider";
@@ -8,12 +8,16 @@ import { useForm } from "react-hook-form";
 
 const Register = () => {
   const { registerUser, logout, signinwithGoogle } = useContext(Authcontext);
-  // console.log(user);
+  const [errorMgs, setErrorMgs] = useState(" ");
   const auth = getAuth();
+
   const saveUser = (user) => {
-    const currentUser = {
+    console.log("from save data");
+    console.log(user);
+    const saveUser = {
       email: user.email,
       name: user.displayName,
+      photo: user.photoURL,
       role: "Student",
     };
     fetch(`http://localhost:5000/users/${user?.email}`, {
@@ -21,17 +25,19 @@ const Register = () => {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(currentUser),
+      body: JSON.stringify(saveUser),
     })
       .then((res) => res.json())
       .then((data) => console.log(data));
   };
+
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
+
   const onSubmit = (data) => {
     // console.log(data);
     const { name, email, password, confpassword, photo } = data;
@@ -79,15 +85,13 @@ const Register = () => {
       Swal.fire({
         icon: "error",
         title: "Photo Missing",
-        text: "PLease give the photo URL",
+        text: "PLease upload photo",
       });
       return;
     }
     if ((email, password)) {
       registerUser(email, password)
         .then((result) => {
-          // const loggedUser = result.user.email;
-          // console.log(loggedUser);
           Swal.fire({
             icon: "success",
             title: "Congratulations",
@@ -104,7 +108,6 @@ const Register = () => {
             .catch((error) => {
               console.log(error);
             });
-
           // console.log(loggedUser);
           logout()
             .then(() => {})
@@ -114,7 +117,7 @@ const Register = () => {
         })
         .catch((error) => {
           let errrormessage = error?.code?.split("auth/")[1];
-          console.log(errrormessage);
+          setErrorMgs(errrormessage);
         });
     }
   };
@@ -142,7 +145,7 @@ const Register = () => {
           />
         </Slide>
         <Fade delay={500} className="w-full md:w-6/12 z-10">
-          <div className="md:w-10/12 mx-auto w-full p-8 space-y-3 rounded-xl bg-blue-950 dark:bg-blue-950 text-gray-100 dark:text-gray-100">
+          <div className="md:w-10/12 mx-auto w-full p-8 space-y-3 rounded-xl bg-blue-800 dark:bg-blue-950 text-gray-100 dark:text-gray-100">
             <h1 className="text-2xl font-bold text-center">Register</h1>
             <form
               onSubmit={handleSubmit(onSubmit)}
@@ -198,7 +201,7 @@ const Register = () => {
                   htmlFor="photo"
                   className="peer-focus:font-medium absolute text-sm text-gray-50 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                 >
-                  Photo
+                  Photo Url
                 </label>
               </div>
               <div className="space-y-1 text-sm">
@@ -244,7 +247,7 @@ const Register = () => {
               </button>
 
               <div className="errorMessage">
-                <p className="text-rose-600">error</p>
+                <p className="text-rose-600">{errorMgs}</p>
               </div>
             </form>
             <div className="flex items-center pt-4 space-x-1">

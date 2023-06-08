@@ -29,7 +29,6 @@ const InstructorAddClass = () => {
     const price = parseFloat(form.price.value);
     const available = parseInt(form.available.value);
     const description = form.description.value;
-
     const imageLink = form.image.files[0];
 
     imageUpload(imageLink)
@@ -44,6 +43,7 @@ const InstructorAddClass = () => {
           description,
           image: data.data.display_url,
           status: "pending",
+          student: 25,
         };
         fetch("http://localhost:5000/addClass", {
           method: "POST",
@@ -66,44 +66,6 @@ const InstructorAddClass = () => {
       .catch((error) => {
         console.log(error.message);
       });
-
-    // console.log(
-    //   classname,
-    //   instructorName,
-    //   instructoremail,
-    //   price,
-    //   available,
-    //   description
-    // );
-
-    // const data = {
-    //   classname,
-    //   instructorName,
-    //   instructoremail,
-    //   price,
-    //   available,
-    //   description,
-    //   image,
-    // };
-    // console.log(data);
-
-    // fetch("http://localhost:5000/addClass", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(data),
-    // })
-    //   .then((res) => res.json())
-    //   .then((result) => {
-    //     // console.log(result);
-    //     if (result.insertedId) {
-    //       Swal.fire({
-    //         icon: "success",
-    //         title: "Class added",
-    //         text: "PLease fill the form again to add more Class",
-    //       });
-    //     }
-    //   });
-    // console.log(data);
     form.reset();
   };
 
@@ -138,7 +100,7 @@ const InstructorAddClass = () => {
                 id="classname"
                 name="className"
                 type="text"
-                placeholder="Toy Name"
+                placeholder="Class Name"
                 className="h-9 ps-3 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-400 dark:border-gray-700 text-gray-900"
               />
             </div>
@@ -234,7 +196,7 @@ const InstructorAddClass = () => {
               <input
                 type="submit"
                 placeholder="Add Class"
-                className="bg-transparent hover:bg-blue-700 text-blue-600 hover:text-white rounded shadow hover:shadow-lg py-1 px-3 border border-blue-600 hover:border-transparent"
+                className="bg-transparent hover:bg-blue-700 text-gray-300 hover:text-white rounded shadow hover:shadow-lg py-1 px-3 border border-gray-200 hover:border-transparent"
               />
             </div>
           </div>

@@ -1,6 +1,6 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { GrLogout } from "react-icons/gr";
-import { AiOutlineBars } from "react-icons/ai";
+import { AiOutlineBars, AiOutlineHome } from "react-icons/ai";
 // import HostMenu from "./HostMenu";
 // import GuestMenu from "./GuestMenu";
 import { useContext, useState } from "react";
@@ -120,6 +120,13 @@ const Sidebar = () => {
             </>
           )}
 
+          <Link
+            to={"/"}
+            className="flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform"
+          >
+            <AiOutlineHome className="w-5 h-5" />
+            <span className="mx-4 font-medium">Home</span>
+          </Link>
           <button
             onClick={handleLogout}
             className="flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform"

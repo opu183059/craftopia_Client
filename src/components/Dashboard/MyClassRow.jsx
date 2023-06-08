@@ -1,7 +1,8 @@
 import Swal from "sweetalert2";
 
 const MyClassRow = ({ classes, index }) => {
-  const { classname, price, available, image, status, _id } = classes || {};
+  const { classname, price, available, image, status, _id, student } =
+    classes || {};
 
   const delletClass = (id) => {
     console.log(id);
@@ -36,11 +37,7 @@ const MyClassRow = ({ classes, index }) => {
           <p>{index + 1}</p>
         </td>
         <td className="p-3">
-          <div className="avatar rounded">
-            <div className="mask mask-squircle w-12 h-12">
-              <img src={image} alt="" />
-            </div>
-          </div>
+          <img src={image} className="w-12 h-12" alt="" />
         </td>
         <td className="p-3">
           <p>{classname}</p>
@@ -49,7 +46,7 @@ const MyClassRow = ({ classes, index }) => {
           <p>{price}</p>
         </td>
         <td className="p-3">
-          <p>47</p>
+          <p>{student}</p>
         </td>
         <td className="p-3">
           <p>{available}</p>
