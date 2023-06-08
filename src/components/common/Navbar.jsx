@@ -117,14 +117,16 @@ const Navbar = () => {
               </div>
             )}
           </div>
-          <div className="flex items-center gap-2 text-blue-700 dark:text-blue-400 font-bold text-xl">
-            <img
-              src="https://i.ibb.co/GVKwXgL/Colorful-Cute-Butterfly-and-Paint-Brush-Illustration-Local-Artist-Community-Logo-removebg-preview.png"
-              alt=""
-              className="w-10 "
-            />
-            <h1 className="font-akaya text-3xl">CraftoPia</h1>
-          </div>
+          <Link to={"/"}>
+            <div className="flex items-center gap-2 text-blue-700 dark:text-blue-400 font-bold text-xl">
+              <img
+                src="https://i.ibb.co/GVKwXgL/Colorful-Cute-Butterfly-and-Paint-Brush-Illustration-Local-Artist-Community-Logo-removebg-preview.png"
+                alt=""
+                className="w-10 "
+              />
+              <h1 className="font-akaya text-3xl">CraftoPia</h1>
+            </div>
+          </Link>
           <div className="darkSwitch hidden md:flex gap-2">
             {user ? (
               <button className="flex items-center">

@@ -21,7 +21,7 @@ const TopClassCard = ({ classData }) => {
   return (
     <>
       <div
-        className={`max-w-xs p-6 rounded-md shadow-md dark:bg-gray-900 dark:text-gray-50`}
+        className={`max-w-xl p-6 rounded-md shadow-md dark:bg-gray-900 dark:text-gray-50`}
       >
         <img
           src={image}

@@ -20,7 +20,7 @@ const TopClasses = () => {
         <h1 className="font-akaya text-5xl text-center mb-5">
           Our Top Classes
         </h1>
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
           {Classes?.slice(0, 6)?.map((classData) => (
             <TopClassCard
               classData={classData}

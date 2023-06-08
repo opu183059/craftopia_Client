@@ -18,8 +18,8 @@ const Instructor = () => {
         <h1 className="font-akaya text-5xl text-center mb-5">
           Top Instructors
         </h1>
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
-          {instructor?.map((instructor) => (
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
+          {instructor?.slice(0, 6)?.map((instructor) => (
             <InstructorCard
               instructor={instructor}
               key={instructor._id}
