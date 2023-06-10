@@ -4,7 +4,8 @@ import { BsFillTrash3Fill } from "react-icons/bs";
 
 // eslint-disable-next-line react/prop-types
 const Usersrow = ({ user, index }) => {
-  const { email, role } = user || {};
+  const { email, role, name, photo } = user || {};
+
   const [ibtn, setIbtn] = useState(false);
   const [abtn, setAbtn] = useState(false);
 
@@ -80,6 +81,12 @@ const Usersrow = ({ user, index }) => {
           <p>{index + 1}</p>
         </td>
         <td className="p-3">
+          <img src={photo} className="w-12 h-12 rounded-xl" alt="" />
+        </td>
+        <td className="p-3">
+          <p>{name}</p>
+        </td>
+        <td className="p-3">
           <p>{email}</p>
         </td>
         <td className="p-3">
@@ -90,7 +97,7 @@ const Usersrow = ({ user, index }) => {
             disabled={ibtn}
             className={`bg-transparent ${
               ibtn ? "hover:bg-red-700 bg-red-700" : "hover:bg-blue-700"
-            } hover:bg-blue-700 text-blue-600 hover:text-white rounded shadow hover:shadow-lg py-1 px-3 border border-blue-600 hover:border-transparent`}
+            }  text-blue-600 hover:text-white rounded shadow hover:shadow-lg py-1 px-3 border border-blue-600 hover:border-transparent`}
             onClick={() => {
               makeInstructor(email);
             }}

@@ -20,9 +20,10 @@ const Footer = () => {
               CarftoPia
             </span>
           </a>
-          <div className="mt-3 text-center md:text-left">
-            Find cuddly companions and farmyard favorites, including cows, dogs,
-            cats, and more. Shop now and bring joy to playtime!
+          <div className="mt-3 text-center md:text-left md:pr-20">
+            Unleash your creativity at our craft teaching school. Discover the
+            joy of crafting, as every stitch becomes art. Join us and explore a
+            world of creativity
           </div>
         </div>
         <div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-3">
@@ -63,8 +64,8 @@ const Footer = () => {
                   Privacy
                 </a>
               </li>
-              <li className="hover:underline hover:text-blue-500">
-                <Link to={"terms"}>Terms and Condition</Link>
+              <li className="hover:underline hover:text-blue-500 text-blue-600 font-semibold">
+                <Link to={"/termsAndCondition"}>Terms and Condition</Link>
               </li>
             </ul>
           </div>

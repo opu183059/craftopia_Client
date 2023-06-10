@@ -43,7 +43,7 @@ const InstructorAddClass = () => {
           description,
           image: data.data.display_url,
           status: "pending",
-          student: 25,
+          student: 36,
         };
         fetch("http://localhost:5000/addClass", {
           method: "POST",

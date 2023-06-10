@@ -27,7 +27,9 @@ const Allusers = () => {
           <table className="min-w-full">
             <thead className="dark:bg-gray-700">
               <tr className="text-left">
-                <th className="p-3">#</th>
+                <th className="p-3">ID</th>
+                <th className="p-3">Photo</th>
+                <th className="p-3">Name</th>
                 <th className="p-3">Email</th>
                 <th className="p-3">Role</th>
                 <th className="p-3">Change Role</th>

@@ -27,7 +27,7 @@ const InstructorMyClass = () => {
         <div className="overflow-x-auto">
           <table className="min-w-full">
             <thead className="dark:bg-gray-700">
-              <tr className="text-left">
+              <tr className="text-center">
                 <th className="p-3">#</th>
                 <th className="p-3">Image</th>
                 <th className="p-3">Name</th>
@@ -35,7 +35,8 @@ const InstructorMyClass = () => {
                 <th className="p-3">Enroled</th>
                 <th className="p-3">Available</th>
                 <th className="p-3">Status</th>
-                <th className="p-3">Action</th>
+                <th className="p-3">Edit</th>
+                <th className="p-3">Delete</th>
               </tr>
             </thead>
             <tbody>

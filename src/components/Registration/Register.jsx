@@ -91,6 +91,7 @@ const Register = () => {
       .then((result) => {
         saveUser(result.user);
         // console.log(result.user);
+        // console.log(result);
       })
       .catch((error) => {
         console.log(error);

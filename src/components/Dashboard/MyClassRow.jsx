@@ -1,4 +1,7 @@
 import Swal from "sweetalert2";
+import { BiEdit } from "react-icons/bi";
+import { BsFillTrash3Fill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const MyClassRow = ({ classes, index }) => {
   const { classname, price, available, image, status, _id, student } =
@@ -32,12 +35,12 @@ const MyClassRow = ({ classes, index }) => {
 
   return (
     <>
-      <tr className="border-b border-opacity-20 dark:border-gray-700 dark:bg-gray-900">
+      <tr className="border-b border-opacity-20 dark:border-gray-700 dark:bg-gray-900 text-center">
         <td className="p-3">
           <p>{index + 1}</p>
         </td>
         <td className="p-3">
-          <img src={image} className="w-12 h-12" alt="" />
+          <img src={image} className="w-12 h-12 rounded-xl" alt="" />
         </td>
         <td className="p-3">
           <p>{classname}</p>
@@ -55,14 +58,16 @@ const MyClassRow = ({ classes, index }) => {
           <p>{status}</p>
         </td>
         <td>
-          <button onClick={() => delletClass(_id)}>dellete</button>
-          {/* <button
-            onClick={() => {
-              DeleteUser(email);
-            }}
-          >
-            Delete
-          </button> */}
+          <button>
+            <Link to={`updateclass/${_id}`}>
+              <BiEdit size={25}></BiEdit>
+            </Link>
+          </button>
+        </td>
+        <td>
+          <button onClick={() => delletClass(_id)}>
+            <BsFillTrash3Fill size={23}></BsFillTrash3Fill>
+          </button>
         </td>
       </tr>
     </>

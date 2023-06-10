@@ -18,6 +18,8 @@ import AllClasses from "./components/Classes/AllClasses.jsx";
 import InstructorsPage from "./components/Instructors.jsx/InstructorsPage.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import SelectedClass from "./components/Dashboard/SelectedClass.jsx";
+import TermsAndCondition from "./components/common/TermsAndCondition.jsx";
+import InstructorUpdateClass from "./components/Dashboard/InstructorUpdateClass.jsx";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -46,6 +48,10 @@ const router = createBrowserRouter([
         path: "/instructor",
         element: <InstructorsPage></InstructorsPage>,
       },
+      {
+        path: "/termsAndCondition",
+        element: <TermsAndCondition></TermsAndCondition>,
+      },
     ],
   },
   {
@@ -71,6 +77,12 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/myclass",
         element: <InstructorMyClass></InstructorMyClass>,
+      },
+      {
+        path: "/dashboard/myclass/updateclass/:id",
+        element: <InstructorUpdateClass></InstructorUpdateClass>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/classSearch/${params.id}`),
       },
       {
         path: "/dashboard/selectedClasses",
