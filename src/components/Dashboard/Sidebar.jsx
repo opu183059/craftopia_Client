@@ -45,23 +45,19 @@ const Sidebar = () => {
         <div>
           <div>
             <div className="flex flex-col items-center mt-6 -mx-2">
-              <Link to="/dashboard">
-                <img
-                  className="object-cover w-24 h-24 mx-2 rounded-full"
-                  src={user?.photoURL}
-                  alt=""
-                  referrerPolicy="no-referrer"
-                />
-              </Link>
+              <img
+                className="object-cover w-24 h-24 mx-2 rounded-full"
+                src={user?.photoURL}
+                alt=""
+                referrerPolicy="no-referrer"
+              />
 
-              <h4 className="mx-2 mt-2 font-medium text-gray-800  hover:underline">
-                {role}
-              </h4>
-              <h4 className="mx-2 mt-2 font-medium text-gray-800  hover:underline">
+              <h4 className="mx-2 mt-2 font-medium text-gray-800">{role}</h4>
+              <h4 className="mx-2 mt-2 font-medium text-gray-800 ">
                 {user?.displayName}
               </h4>
 
-              <p className="mx-2 mt-1 text-sm font-medium text-gray-600  hover:underline">
+              <p className="mx-2 mt-1 text-sm font-medium text-gray-600">
                 {user?.email}
               </p>
             </div>

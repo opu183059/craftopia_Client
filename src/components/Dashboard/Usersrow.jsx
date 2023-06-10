@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
+import { BsFillTrash3Fill } from "react-icons/bs";
 
+// eslint-disable-next-line react/prop-types
 const Usersrow = ({ user, index }) => {
   const { _id, email, role } = user || {};
   const [ibtn, setIbtn] = useState(false);
@@ -113,7 +115,10 @@ const Usersrow = ({ user, index }) => {
               DeleteUser(email);
             }}
           >
-            Delete
+            <BsFillTrash3Fill
+              size={20}
+              className="hover:text-red-600"
+            ></BsFillTrash3Fill>
           </button>
         </td>
       </tr>

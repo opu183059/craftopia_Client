@@ -84,16 +84,19 @@ const Navbar = () => {
                 >
                   Classes
                 </NavLink>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive
-                      ? " text-blue-700 dark:text-blue-400 font-bold block px-4 py-2 hover:bg-gray-200"
-                      : "block px-4 py-2 text-gray-800 dark:text-slate-100 dark:hover:text-gray-800 hover:bg-gray-200"
-                  }
-                  to="/dashboard"
-                >
-                  Dashboard
-                </NavLink>
+                {user && (
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? " text-blue-700 dark:text-blue-400 font-bold block px-4 py-2 hover:bg-gray-200"
+                        : "block px-4 py-2 text-gray-800 dark:text-slate-100 dark:hover:text-gray-800 hover:bg-gray-200"
+                    }
+                    to="/dashboard"
+                  >
+                    Dashboard
+                  </NavLink>
+                )}
+
                 <div className="darkSwitch md:hidden gap-2">
                   <label
                     htmlFor="Toggle1"
@@ -131,8 +134,12 @@ const Navbar = () => {
             {user ? (
               <button className="flex items-center">
                 {user.photoURL ? (
-                  <div className="w-8 h-8 rounded mr-2">
-                    <img src={user.photoURL} />
+                  <div className="">
+                    <img
+                      src={user.photoURL}
+                      alt=""
+                      className="w-9 h-9 rounded-full mr-2"
+                    />
                   </div>
                 ) : (
                   <BsPersonCircle size={30} className="mr-2"></BsPersonCircle>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
+import { BsFillTrash3Fill } from "react-icons/bs";
 
 const AllClassesRow = ({ classdata, index }) => {
   const {
@@ -37,8 +38,8 @@ const AllClassesRow = ({ classdata, index }) => {
     setDnbtn(true),
       Swal.fire({
         icon: "success",
-        title: "Approved",
-        text: "Approved Successfully",
+        title: "Denied",
+        text: "Classes Denied",
       });
     const currentUser = {
       status: "Denied",
@@ -101,6 +102,7 @@ const AllClassesRow = ({ classdata, index }) => {
             onClick={() => {
               Deny(_id);
             }}
+            disabled={Dnbtn}
             className={`bg-transparent ${
               Dnbtn
                 ? "hover:bg-red-700 bg-red-700 text-gray-500"
@@ -114,7 +116,12 @@ const AllClassesRow = ({ classdata, index }) => {
           </button>
         </td>
         <td>
-          <button>delete</button>
+          <button>
+            <BsFillTrash3Fill
+              size={20}
+              className="hover:text-red-600"
+            ></BsFillTrash3Fill>
+          </button>
         </td>
       </tr>
     </>

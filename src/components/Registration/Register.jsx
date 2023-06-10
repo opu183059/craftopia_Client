@@ -12,12 +12,13 @@ const Register = () => {
   const auth = getAuth();
 
   const saveUser = (user) => {
-    console.log("from save data");
     console.log(user);
+    // console.log("Curren user");
+    // console.log(auth.currentUser);
     const saveUser = {
-      email: user.email,
-      name: user.displayName,
-      photo: user.photoURL,
+      email: user?.email,
+      name: user?.displayName,
+      photo: user?.photoURL,
       role: "Student",
     };
     fetch(`http://localhost:5000/users/${user?.email}`, {
@@ -41,30 +42,6 @@ const Register = () => {
   const onSubmit = (data) => {
     // console.log(data);
     const { name, email, password, confpassword, photo } = data;
-    if (!name) {
-      Swal.fire({
-        icon: "error",
-        title: "Name Missing",
-        text: "Please give a User Name",
-      });
-      return;
-    }
-    if (!email) {
-      Swal.fire({
-        icon: "error",
-        title: "Email ID missing",
-        text: "Please give a valid email id",
-      });
-      return;
-    }
-    if (!password) {
-      Swal.fire({
-        icon: "error",
-        title: "Password Missing",
-        text: "PLease set the passwords",
-      });
-      return;
-    }
     if (password.length < 8) {
       Swal.fire({
         icon: "error",
@@ -108,6 +85,7 @@ const Register = () => {
             .catch((error) => {
               console.log(error);
             });
+          // saveUser(auth.currentUser);
           // console.log(loggedUser);
           logout()
             .then(() => {})
@@ -161,7 +139,6 @@ const Register = () => {
                   id="name"
                   className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder=" "
-                  required
                 />
                 <label
                   htmlFor="name"
@@ -170,7 +147,9 @@ const Register = () => {
                   Name
                 </label>
               </div>
-
+              {errors.name && (
+                <span className="text-red-500">Name is required</span>
+              )}
               <div className="relative z-0 w-full mb-6 group">
                 <input
                   {...register("email", { required: true })}
@@ -187,6 +166,9 @@ const Register = () => {
                   Email
                 </label>
               </div>
+              {errors.email && (
+                <span className="text-red-500">Email is required</span>
+              )}
               <div className="relative z-0 w-full mb-6 group">
                 <input
                   {...register("photo", { required: true })}
@@ -195,7 +177,6 @@ const Register = () => {
                   id="photo"
                   className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder=" "
-                  required
                 />
                 <label
                   htmlFor="photo"
@@ -204,16 +185,22 @@ const Register = () => {
                   Photo Url
                 </label>
               </div>
+              {errors.photo && (
+                <span className="text-red-500">Photo URL is required</span>
+              )}
               <div className="space-y-1 text-sm">
                 <div className="relative z-0 w-full mb-6 group">
                   <input
-                    {...register("password", { required: true })}
+                    {...register("password", {
+                      required: true,
+                      minLength: 6,
+                      pattern: /(?=.*[A-Z])(?=.*[!@#$&*])/,
+                    })}
                     type="password"
                     name="password"
                     id="password"
                     className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" "
-                    required
                   />
                   <label
                     htmlFor="password"
@@ -222,6 +209,21 @@ const Register = () => {
                     Password
                   </label>
                 </div>
+                {errors.password?.type === "required" && (
+                  <p className="text-red-600">Password is required</p>
+                )}
+                {errors.password?.type === "minLength" && (
+                  <p className="text-red-600">
+                    Password have to be more than 6 characters
+                  </p>
+                )}
+
+                {errors.password?.type === "pattern" && (
+                  <p className="text-red-600">
+                    Password must have at least one Capital letter and one
+                    special character.
+                  </p>
+                )}
               </div>
               <div className="space-y-1 text-sm">
                 <div className="relative z-0 w-full mb-6 group">
@@ -232,7 +234,6 @@ const Register = () => {
                     id="confpassword"
                     className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" "
-                    required
                   />
                   <label
                     htmlFor="confpassword"
