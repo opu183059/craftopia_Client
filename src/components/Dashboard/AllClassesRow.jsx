@@ -2,6 +2,7 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import { BsFillTrash3Fill } from "react-icons/bs";
 
+// eslint-disable-next-line react/prop-types
 const AllClassesRow = ({ classdata, index }) => {
   const {
     _id,

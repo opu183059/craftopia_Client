@@ -54,16 +54,18 @@ const Navbar = () => {
                 >
                   Home
                 </NavLink>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive
-                      ? " text-blue-700 dark:text-blue-400 font-bold block px-4 py-2 hover:bg-gray-200"
-                      : "block px-4 py-2 text-gray-800 dark:text-slate-100 dark:hover:text-gray-800 hover:bg-gray-200"
-                  }
-                  to="/login"
-                >
-                  Login
-                </NavLink>
+                {!user && (
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? " text-blue-700 dark:text-blue-400 font-bold block px-4 py-2 hover:bg-gray-200"
+                        : "block px-4 py-2 text-gray-800 dark:text-slate-100 dark:hover:text-gray-800 hover:bg-gray-200"
+                    }
+                    to="/login"
+                  >
+                    Registration
+                  </NavLink>
+                )}
                 <NavLink
                   className={({ isActive }) =>
                     isActive

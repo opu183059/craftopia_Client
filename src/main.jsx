@@ -17,6 +17,7 @@ import Privateroute from "./components/Privateroute/Privateroute.jsx";
 import AllClasses from "./components/Classes/AllClasses.jsx";
 import InstructorsPage from "./components/Instructors.jsx/InstructorsPage.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import SelectedClass from "./components/Dashboard/SelectedClass.jsx";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/myclass",
         element: <InstructorMyClass></InstructorMyClass>,
+      },
+      {
+        path: "/dashboard/selectedClasses",
+        element: <SelectedClass></SelectedClass>,
       },
     ],
   },

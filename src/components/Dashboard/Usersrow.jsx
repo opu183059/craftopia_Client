@@ -4,7 +4,7 @@ import { BsFillTrash3Fill } from "react-icons/bs";
 
 // eslint-disable-next-line react/prop-types
 const Usersrow = ({ user, index }) => {
-  const { _id, email, role } = user || {};
+  const { email, role } = user || {};
   const [ibtn, setIbtn] = useState(false);
   const [abtn, setAbtn] = useState(false);
 

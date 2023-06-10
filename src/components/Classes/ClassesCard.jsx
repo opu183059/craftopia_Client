@@ -13,10 +13,34 @@ const ClassesCard = ({ classData }) => {
     if (!user) {
       Swal.fire({
         icon: "error",
-        title: "Not Loged in",
+        title: "Can not select class",
         text: "Please login to select it",
       });
+      return;
     }
+    const selectedData = {
+      studentEmail: user?.email,
+      classname: classname,
+      instructorName: instructorName,
+      price: price,
+      image: image,
+      ClassId: _id,
+    };
+    fetch("http://localhost:5000/sellectClass", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(selectedData),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.insertedId) {
+          Swal.fire({
+            icon: "success",
+            title: "Class Selected",
+            text: "You can see it on your dashboard",
+          });
+        }
+      });
   };
   return (
     <>

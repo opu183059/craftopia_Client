@@ -12,9 +12,7 @@ const Register = () => {
   const auth = getAuth();
 
   const saveUser = (user) => {
-    console.log(user);
-    // console.log("Curren user");
-    // console.log(auth.currentUser);
+    // console.log(user);
     const saveUser = {
       email: user?.email,
       name: user?.displayName,
@@ -31,7 +29,6 @@ const Register = () => {
       .then((res) => res.json())
       .then((data) => console.log(data));
   };
-
   const {
     register,
     handleSubmit,
@@ -42,27 +39,18 @@ const Register = () => {
   const onSubmit = (data) => {
     // console.log(data);
     const { name, email, password, confpassword, photo } = data;
-    if (password.length < 8) {
-      Swal.fire({
-        icon: "error",
-        title: "Week Password",
-        text: "Password should be minimum 8 character",
-      });
-      return;
-    }
+
+    const saveData = {
+      email: email,
+      displayName: name,
+      photoURL: photo,
+    };
+    saveUser(saveData);
     if (password != confpassword) {
       Swal.fire({
         icon: "error",
         title: "Password Missatched",
         text: "Please use same password on both fields",
-      });
-      return;
-    }
-    if (!photo) {
-      Swal.fire({
-        icon: "error",
-        title: "Photo Missing",
-        text: "PLease upload photo",
       });
       return;
     }
@@ -74,7 +62,7 @@ const Register = () => {
             title: "Congratulations",
             text: "Account Created Successfully goto login",
           });
-          saveUser(result.user);
+          // saveUser(result.user);
           updateProfile(auth.currentUser, {
             displayName: name,
             photoURL: photo,
@@ -86,7 +74,6 @@ const Register = () => {
               console.log(error);
             });
           // saveUser(auth.currentUser);
-          // console.log(loggedUser);
           logout()
             .then(() => {})
             .catch((error) => {
@@ -99,19 +86,17 @@ const Register = () => {
         });
     }
   };
-  // test
-
   const googleLogin = () => {
     signinwithGoogle()
       .then((result) => {
         saveUser(result.user);
-        console.log(result.user);
+        // console.log(result.user);
       })
       .catch((error) => {
         console.log(error);
       });
   };
-  // console.log(user);
+
   return (
     <div className="pt-24 bg-slate-50 dark:bg-gray-800">
       <div className="container mx-auto flex flex-col-reverse md:flex-row-reverse gap-5 py-6">
@@ -242,6 +227,11 @@ const Register = () => {
                     Confirm Password
                   </label>
                 </div>
+                {errors.confpassword && (
+                  <span className="text-red-500">
+                    Confirm password is required
+                  </span>
+                )}
               </div>
               <button className="block w-auto rounded-md px-4 py-2 text-center text-slate-100 hover:scale-105 transition-all bg-blue-600 hover:border-blue-600 border border-blue-950 ">
                 Register
