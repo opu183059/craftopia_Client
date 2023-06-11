@@ -1,6 +1,7 @@
 import Banner from "./Banner";
 import Extrasection from "./Extrasection";
 import Instructor from "./Instructor";
+import MeetTeam from "./MeetTeam";
 import TopClasses from "./TopClasses";
 
 const MainLayout = () => {
@@ -10,6 +11,7 @@ const MainLayout = () => {
       <TopClasses></TopClasses>
       <Instructor></Instructor>
       <Extrasection></Extrasection>
+      <MeetTeam></MeetTeam>
     </div>
   );
 };

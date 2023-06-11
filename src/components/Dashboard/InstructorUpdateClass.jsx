@@ -52,9 +52,9 @@ const InstructorUpdateClass = () => {
           onSubmit={handleSubmit(onSubmit)}
           noValidate=""
           action=""
-          className="container flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid"
+          className="w-11/12 flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid"
         >
-          <fieldset className=" w-10/12 md:8/12 lg:7/12 mx-auto p-6 rounded-md shadow-sm dark:bg-gray-900">
+          <fieldset className=" w-11/12 md:8/12 lg:7/12 mx-auto p-6 rounded-md shadow-sm dark:bg-gray-900">
             <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
               <div className="col-span-full flex text-gray-100">
                 <h1 className="font-medium  text-lg underline">

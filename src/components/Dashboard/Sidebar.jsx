@@ -1,8 +1,7 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { GrLogout } from "react-icons/gr";
 import { AiOutlineBars, AiOutlineHome } from "react-icons/ai";
-// import HostMenu from "./HostMenu";
-// import GuestMenu from "./GuestMenu";
+import { BiLogOutCircle } from "react-icons/bi";
 import { useContext, useState } from "react";
 import { Authcontext } from "../Provider/Authprovider";
 const Sidebar = () => {
@@ -31,33 +30,34 @@ const Sidebar = () => {
         </div>
         <button
           onClick={handleToggle}
-          className="mobile-menu-button p-4 focus:outline-none focus:bg-gray-200"
+          className="mobile-menu-button p-4 focus:outline-none focus:border-gray-200"
         >
           <AiOutlineBars className="h-5 w-5" />
         </button>
       </div>
 
       <div
-        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-gray-100 w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
+        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden dark:bg-blue-950 bg-blue-500 w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
           isActive && "-translate-x-full"
         }  md:translate-x-0  transition duration-200 ease-in-out`}
       >
-        <div>
+        <div className="text-gray-950 dark:text-gray-50">
           <div>
-            <div className="flex flex-col items-center mt-6 -mx-2">
+            <div className="mt-3">
               <img
-                className="object-cover w-24 h-24 mx-2 rounded-full"
+                className="border-2 w-24 h-24 mx-2 rounded-lg"
                 src={user?.photoURL}
                 alt=""
                 referrerPolicy="no-referrer"
               />
 
-              <h4 className="mx-2 mt-2 font-medium text-gray-800">{role}</h4>
-              <h4 className="mx-2 mt-2 font-medium text-gray-800 ">
+              <h4 className="mx-2 mt-2 cursor-default font-akaya text-2xl">
+                {role}
+              </h4>
+              <h4 className="mx-2 mt-2 cursor-default font-medium ">
                 {user?.displayName}
               </h4>
-
-              <p className="mx-2 mt-1 text-sm font-medium text-gray-600">
+              <p className="mx-2 mt-1 cursor-default text-sm font-medium text-gray-200">
                 {user?.email}
               </p>
             </div>
@@ -73,8 +73,8 @@ const Sidebar = () => {
               <NavLink
                 to="/dashboard/allusers"
                 className={({ isActive }) =>
-                  `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? "bg-gray-300  text-gray-700" : "text-gray-600"
+                  `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-blue-800 rounded-lg ${
+                    isActive ? "bg-blue-800  text-white" : " "
                   }`
                 }
               >
@@ -83,8 +83,8 @@ const Sidebar = () => {
               <NavLink
                 to="/dashboard/classes"
                 className={({ isActive }) =>
-                  `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? "bg-gray-300  text-gray-700" : "text-gray-600"
+                  `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-blue-800  rounded-lg ${
+                    isActive ? "bg-blue-800  text-white" : " "
                   }`
                 }
               >
@@ -97,8 +97,8 @@ const Sidebar = () => {
               <NavLink
                 to="/dashboard/addClass"
                 className={({ isActive }) =>
-                  `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? "bg-gray-300  text-gray-700" : "text-gray-600"
+                  `flex items-center px-4 py-2 mt-5 rounded-lg transition-colors duration-300 transform  hover:bg-blue-800  ${
+                    isActive ? "bg-blue-800  text-white" : " "
                   }`
                 }
               >
@@ -107,8 +107,8 @@ const Sidebar = () => {
               <NavLink
                 to="/dashboard/myclass"
                 className={({ isActive }) =>
-                  `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? "bg-gray-300  text-gray-700" : "text-gray-600"
+                  `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-blue-800 rounded-lg ${
+                    isActive ? "bg-blue-800  text-white" : " "
                   }`
                 }
               >
@@ -121,8 +121,8 @@ const Sidebar = () => {
               <NavLink
                 to="/dashboard/selectedClasses"
                 className={({ isActive }) =>
-                  `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? "bg-gray-300  text-gray-700" : "text-gray-600"
+                  `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-blue-800  rounded-lg ${
+                    isActive ? "bg-blue-800  text-white" : " "
                   }`
                 }
               >
@@ -131,8 +131,8 @@ const Sidebar = () => {
               <NavLink
                 to="/dashboard/enroledClasses"
                 className={({ isActive }) =>
-                  `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? "bg-gray-300  text-gray-700" : "text-gray-600"
+                  `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-blue-800 rounded-lg ${
+                    isActive ? "bg-blue-800  text-white" : " "
                   }`
                 }
               >
@@ -143,16 +143,16 @@ const Sidebar = () => {
 
           <Link
             to={"/"}
-            className="flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform"
+            className="flex w-full items-center px-4 py-2 mt-5  hover:bg-blue-800 text-white rounded-lg transition-colors duration-300 transform"
           >
-            <AiOutlineHome className="w-5 h-5" />
+            <AiOutlineHome></AiOutlineHome>
             <span className="mx-4 font-medium">Home</span>
           </Link>
           <button
             onClick={handleLogout}
-            className="flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform"
+            className="flex w-full items-center px-4 py-2 mt-5 hover:bg-blue-800 text-white rounded-lg transition-colors duration-300 transform"
           >
-            <GrLogout className="w-5 h-5" />
+            <BiLogOutCircle></BiLogOutCircle>
             <span className="mx-4 font-medium">Logout</span>
           </button>
         </div>

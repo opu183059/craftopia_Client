@@ -48,33 +48,33 @@ const Extrasection = () => {
         onAutoplayTimeLeft={onAutoplayTimeLeft}
       >
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+          <img src="https://i.ibb.co/SyVgQYg/Quilled-flowers-sample-quilling-picture.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+          <img src="https://i.ibb.co/t2C6HQJ/nature-crafts.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+          <img src="https://i.ibb.co/ZVkr676/istockphoto-519362488-612x612.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+          <img src="https://i.ibb.co/bRpLRDm/OIP-1.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
+          <img src="https://i.ibb.co/mqtvvDS/caterpillar-craft-1.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
+          <img src="https://i.ibb.co/9nyF3VR/handmade-art-and-craft.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
+          <img src="https://i.ibb.co/37jTmJ9/crafts-for-kids.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
+          <img src="https://i.ibb.co/khySb3z/R.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
+          <img src="https://i.ibb.co/85yJG50/OIP.jpg" />
         </SwiperSlide>
-        <div className="autoplay-progress w-6 hidden" slot="container-end">
+        <div className="autoplay-progress w-6 hidden" slot="w-11/12-end">
           <svg viewBox="0 0 48 48" ref={progressCircle}>
             <circle cx="24" cy="24" r="20"></circle>
           </svg>

@@ -22,7 +22,7 @@ const SelectedClass = () => {
 
   return (
     <div className="pt-20">
-      <div className="container p-2 mx-auto sm:p-4 dark:text-gray-100">
+      <div className="w-11/12 p-2 mx-auto sm:p-4 dark:text-gray-100">
         <div className="overflow-x-auto">
           <table className="min-w-full">
             <thead className="dark:bg-gray-700">

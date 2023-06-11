@@ -45,14 +45,14 @@ const ClassesCard = ({ classData }) => {
   return (
     <>
       <div
-        className={`max-w-xs p-6 rounded-md shadow-md ${
+        className={`max-w-xs hover:shadow-xl p-6 rounded-md shadow-md ${
           remaining == 0 ? "bg-red-400 dark:bg-red-600" : "dark:bg-gray-900"
         }  dark:text-gray-50`}
       >
         <img
           src={image}
           alt=""
-          className="object-cover object-center w-full rounded-md h-72 dark:bg-gray-500"
+          className="object-cover object-center w-full rounded-md h-52 dark:bg-gray-500"
         />
         <div className="mt-6 mb-2">
           <h2 className="text-xl font-semibold tracking-wide">{classname}</h2>
@@ -72,8 +72,13 @@ const ClassesCard = ({ classData }) => {
           </div>
         </div>
         <button
+          disabled={remaining == 0 ? true : false}
           onClick={select}
-          className={`bg-transparent hover:bg-blue-700 text-blue-600 hover:text-white rounded shadow hover:shadow-lg py-1 px-3 border border-blue-600 hover:border-transparent`}
+          className={`${
+            remaining == 0
+              ? "bg-gray-700 border-gray-600"
+              : "bg-transparent border-blue-600 hover:shadow-lg text-blue-600 hover:bg-blue-700 hover:text-white"
+          } rounded shadow  py-1 px-3 border hover:border-transparent`}
         >
           Select
         </button>

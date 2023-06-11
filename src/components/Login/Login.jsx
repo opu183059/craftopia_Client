@@ -58,7 +58,7 @@ const Login = () => {
 
   return (
     <div className="pt-24 bg-slate-50 dark:bg-gray-800">
-      <div className="container mx-auto flex flex-col-reverse md:flex-row gap-5 py-6">
+      <div className="w-11/12 mx-auto flex flex-col-reverse md:flex-row gap-5 py-6">
         <Slide className="w-full md:w-6/12">
           <img
             src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
@@ -68,7 +68,7 @@ const Login = () => {
         </Slide>
 
         <Fade delay={500} className="w-full md:w-6/12">
-          <div className="md:w-10/12 mx-auto w-full p-8 space-y-3 rounded-xl bg-blue-800 dark:bg-blue-950 text-gray-100 dark:text-gray-100">
+          <div className="md:w-11/12 mx-auto w-full p-8 space-y-3 rounded-xl bg-blue-800 dark:bg-blue-950 text-gray-100 dark:text-gray-100">
             <h1 className="text-2xl font-bold text-center">Login</h1>
             <form
               onSubmit={handleSubmit(onSubmit)}

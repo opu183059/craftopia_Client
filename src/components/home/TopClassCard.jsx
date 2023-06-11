@@ -1,27 +1,25 @@
-import { useContext } from "react";
-import { Authcontext } from "../Provider/Authprovider";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 const TopClassCard = ({ classData }) => {
   const { classname, instructorName, price, available, image, student } =
     classData || {};
-  const { user } = useContext(Authcontext);
   const remaining = available - student;
 
+  const navigate = useNavigate();
   const select = () => {
-    if (!user) {
-      Swal.fire({
-        icon: "error",
-        title: "Not Loged in",
-        text: "Please login to select it",
-      });
-    }
+    Swal.fire({
+      icon: "info",
+      title: "Classes Page",
+      text: "You are redirected to classes page where you can find your required classes",
+    });
+    navigate("/classes");
   };
   return (
     <>
       <div
-        className={`max-w-xl p-6 rounded-md shadow-md dark:bg-gray-900 dark:text-gray-50`}
+        className={`max-w-xl p-6 hover:shadow-xl rounded-md shadow-md dark:bg-gray-900 dark:text-gray-50`}
       >
         <img
           src={image}

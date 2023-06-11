@@ -2,7 +2,7 @@
 const InstructorCard = ({ instructor }) => {
   const { _id, email, name, photo } = instructor || {};
   return (
-    <div>
+    <div className="hover:shadow-xl">
       <div
         className={`max-w-xl p-6 rounded-md shadow-md dark:bg-gray-900 dark:text-gray-50`}
       >

@@ -33,7 +33,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="fixed w-full shadow-md mx-auto bg-slate-50 dark:bg-gray-800 p-4 z-50">
-        <div className="container mx-auto flex justify-between items-center">
+        <div className="w-11/12 mx-auto flex justify-between items-center">
           <div>
             <button
               onClick={toggleDropdown}
@@ -45,6 +45,7 @@ const Navbar = () => {
             {isDropdownOpen && (
               <div className="absolute mt-4 z-10 py-2 w-48 bg-slate-50 dark:bg-gray-800 rounded-lg shadow-lg">
                 <NavLink
+                  onClick={toggleDropdown}
                   className={({ isActive }) =>
                     isActive
                       ? " text-blue-700 dark:text-blue-400 font-bold block px-4 py-2 hover:bg-gray-200"
@@ -56,6 +57,7 @@ const Navbar = () => {
                 </NavLink>
                 {!user && (
                   <NavLink
+                    onClick={toggleDropdown}
                     className={({ isActive }) =>
                       isActive
                         ? " text-blue-700 dark:text-blue-400 font-bold block px-4 py-2 hover:bg-gray-200"
@@ -67,6 +69,7 @@ const Navbar = () => {
                   </NavLink>
                 )}
                 <NavLink
+                  onClick={toggleDropdown}
                   className={({ isActive }) =>
                     isActive
                       ? " text-blue-700 dark:text-blue-400 font-bold block px-4 py-2 hover:bg-gray-200"
@@ -77,6 +80,7 @@ const Navbar = () => {
                   Instructor
                 </NavLink>
                 <NavLink
+                  onClick={toggleDropdown}
                   className={({ isActive }) =>
                     isActive
                       ? " text-blue-700 dark:text-blue-400 font-bold block px-4 py-2 hover:bg-gray-200"

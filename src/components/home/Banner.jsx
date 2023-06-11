@@ -31,15 +31,15 @@ const Banner = () => {
         className="mySwiper w-11/12 h-screen"
       >
         <SwiperSlide>
-          <div className="flex flex-col md:flex-row items-center p-10">
+          <div className="flex flex-col md:flex-row items-center">
             <div className="w-full md:w-6/12">
               <img
-                className="w-auto"
+                className="w-auto rounded-2xl p-5 md:p-20"
                 src="https://i.ibb.co/GVKwXgL/Colorful-Cute-Butterfly-and-Paint-Brush-Illustration-Local-Artist-Community-Logo-removebg-preview.png"
                 alt=""
               />
             </div>
-            <div className="w-full md:w-6/12 text-center md:text-left md:p-20">
+            <div className="w-full md:w-6/12 text-center md:text-left p-5 md:p-20">
               <h1 className="font-akaya text-5xl mb-4">Craftopia</h1>
               <p>
                 "Welcome to our Art & Craft School! We're dedicated to fostering
@@ -95,7 +95,7 @@ const Banner = () => {
           </div>
         </SwiperSlide>
 
-        <div className="autoplay-progress w-6" slot="container-end">
+        <div className="autoplay-progress w-6" slot="w-11/12-end">
           <svg viewBox="0 0 48 48" ref={progressCircle}>
             <circle cx="24" cy="24" r="20"></circle>
           </svg>
