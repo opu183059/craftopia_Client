@@ -1,16 +1,27 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import InstructorPageRow from "./InstructorPageRow";
+import axios from "axios";
 
 const InstructorsPage = () => {
-  const [instructor, setInstructor] = useState();
+  // const [instructor, setInstructor] = useState();
 
-  useEffect(() => {
-    fetch("http://localhost:5000/instructor")
-      .then((res) => res.json())
-      .then((result) => {
-        setInstructor(result);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/instructor")
+  //     .then((res) => res.json())
+  //     .then((result) => {
+  //       setInstructor(result);
+  //     });
+  // }, []);
+
+  const { data: instructor = [] } = useQuery({
+    queryKey: ["instructor"],
+    queryFn: async () => {
+      const res = await axios.get("http://localhost:5000/instructor");
+      // console.log(res.data);
+      return res.data;
+    },
+  });
+
   return (
     <div className="pt-24 min-h-screen">
       <div className="w-11/12 mx-auto flex md:flex-row flex-col">

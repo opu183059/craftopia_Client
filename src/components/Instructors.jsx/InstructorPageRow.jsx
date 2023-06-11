@@ -1,7 +1,6 @@
-import React from "react";
-
+// eslint-disable-next-line react/prop-types
 const InstructorPageRow = ({ instructorData }) => {
-  const { _id, email, name, photo } = instructorData || {};
+  const { email, name, photo } = instructorData || {};
   return (
     <tr className="text-right hover:shadow-lg cursor-default border-b border-opacity-20 dark:border-gray-700 dark:bg-gray-800">
       <td>
