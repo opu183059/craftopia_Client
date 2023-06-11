@@ -1,16 +1,19 @@
 import { useContext, useState } from "react";
 import { Fade, Slide } from "react-awesome-reveal";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Authcontext } from "../Provider/Authprovider";
 import Swal from "sweetalert2";
 import { getAuth, updateProfile } from "firebase/auth";
 import { useForm } from "react-hook-form";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const { registerUser, logout, signinwithGoogle } = useContext(Authcontext);
   const [errorMgs, setErrorMgs] = useState(" ");
+  const [showpass, setShowpass] = useState(true);
   const auth = getAuth();
-
+  const navigate = useNavigate();
   const saveUser = (user) => {
     // console.log(user);
     const saveUser = {
@@ -19,7 +22,7 @@ const Register = () => {
       photo: user?.photoURL,
       role: "Student",
     };
-    fetch(`http://localhost:5000/users/${user?.email}`, {
+    fetch(`https://criptofia-server.vercel.app/users/${user?.email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -92,14 +95,20 @@ const Register = () => {
         saveUser(result.user);
         // console.log(result.user);
         // console.log(result);
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);
       });
   };
-
+  const show = () => {
+    setShowpass(!showpass);
+  };
   return (
     <div className="pt-24 bg-slate-50 dark:bg-gray-800">
+      <Helmet>
+        <title>Craftopia | Registration</title>
+      </Helmet>
       <div className="w-11/12 mx-auto flex flex-col-reverse md:flex-row-reverse gap-5 py-6">
         <Slide direction="right" className="w-full md:w-6/12 z-0">
           <img
@@ -182,12 +191,24 @@ const Register = () => {
                       minLength: 6,
                       pattern: /(?=.*[A-Z])(?=.*[!@#$&*])/,
                     })}
-                    type="password"
+                    type={showpass ? "password" : "text"}
                     name="password"
                     id="password"
                     className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" "
                   />
+                  <span
+                    className="absolute right-0 top-3 cursor-pointer"
+                    onClick={() => {
+                      show();
+                    }}
+                  >
+                    {showpass ? (
+                      <AiFillEye size={22}></AiFillEye>
+                    ) : (
+                      <AiFillEyeInvisible size={22}></AiFillEyeInvisible>
+                    )}
+                  </span>
                   <label
                     htmlFor="password"
                     className="peer-focus:font-medium absolute text-sm text-gray-50 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
@@ -221,6 +242,7 @@ const Register = () => {
                     className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" "
                   />
+
                   <label
                     htmlFor="confpassword"
                     className="peer-focus:font-medium absolute text-sm text-gray-50 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"

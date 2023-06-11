@@ -5,7 +5,7 @@ const Instructor = () => {
   const [instructor, setInstructor] = useState();
 
   useEffect(() => {
-    fetch("http://localhost:5000/instructor")
+    fetch("https://criptofia-server.vercel.app/instructor")
       .then((res) => res.json())
       .then((result) => {
         setInstructor(result);

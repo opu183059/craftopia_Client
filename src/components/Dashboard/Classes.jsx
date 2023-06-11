@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import AllClassesRow from "./AllClassesRow";
+import { Helmet } from "react-helmet";
 
 const Classes = () => {
   const [allClasses, setallClasses] = useState();
   const [noUserFound, setNoUserFound] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/allClasses")
+    fetch("https://criptofia-server.vercel.app/allClasses")
       .then((res) => res.json())
       .then((result) => {
         setallClasses(result);
@@ -21,6 +22,9 @@ const Classes = () => {
   //   console.log(newUser);
   return (
     <div className="pt-10">
+      <Helmet>
+        <title>Craftopia | Manage Class</title>
+      </Helmet>
       <div className="w-11/12 p-2 mx-auto sm:p-4 dark:text-gray-100">
         <div className="overflow-x-auto">
           <table className="min-w-full">

@@ -1,12 +1,13 @@
 import ClassesCard from "./ClassesCard";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet";
 
 const AllClasses = () => {
   // const [Classes, setClasses] = useState();
   // const [noDataMessage, setNoDataMessage] = useState();
   // useEffect(() => {
-  //   fetch("http://localhost:5000/allApprovedClasses")
+  //   fetch("https://criptofia-server.vercel.app/allApprovedClasses")
   //     .then((res) => res.json())
   //     .then((result) => {
   //       setClasses(result);
@@ -21,14 +22,19 @@ const AllClasses = () => {
   const { data: Classes = [] } = useQuery({
     queryKey: ["allApprovedClasses"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:5000/allApprovedClasses");
-      console.log(res.data);
+      const res = await axios.get(
+        "https://criptofia-server.vercel.app/allApprovedClasses"
+      );
+      // console.log(res.data);
       return res.data;
     },
   });
 
   return (
     <div className="min-h-screen pt-24">
+      <Helmet>
+        <title>Craftopia | Classes</title>
+      </Helmet>
       <h1 className="font-akaya text-5xl text-center mb-5">All our classes</h1>
       <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-4 gap-4">
         {Classes?.map((classData) => (

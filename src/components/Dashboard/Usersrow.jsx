@@ -20,7 +20,7 @@ const Usersrow = ({ user, index }) => {
     const currentUser = {
       role: "Instructor",
     };
-    return fetch(`http://localhost:5000/users/${email}`, {
+    return fetch(`https://criptofia-server.vercel.app/users/${email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -39,7 +39,7 @@ const Usersrow = ({ user, index }) => {
     const currentUser = {
       role: "Admin",
     };
-    return fetch(`http://localhost:5000/users/${email}`, {
+    return fetch(`https://criptofia-server.vercel.app/users/${email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -59,7 +59,7 @@ const Usersrow = ({ user, index }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/deleteUsers/${email}`, {
+        fetch(`https://criptofia-server.vercel.app/deleteUsers/${email}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

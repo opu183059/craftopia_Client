@@ -3,6 +3,7 @@ import { Authcontext } from "../Provider/Authprovider";
 import { useLoaderData } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const InstructorUpdateClass = () => {
   const { user } = useContext(Authcontext);
@@ -26,7 +27,7 @@ const InstructorUpdateClass = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    fetch(`http://localhost:5000/classUpdate/${_id}`, {
+    fetch(`https://criptofia-server.vercel.app/classUpdate/${_id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -47,6 +48,9 @@ const InstructorUpdateClass = () => {
 
   return (
     <div className="pt-5">
+      <Helmet>
+        <title>Craftopia | Update Class</title>
+      </Helmet>
       <section className="p-6 bg-gray-800 text-gray-900 dark:text-gray-50">
         <form
           onSubmit={handleSubmit(onSubmit)}

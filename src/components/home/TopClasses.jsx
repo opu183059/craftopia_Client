@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import ClassesCard from "../Classes/ClassesCard";
 import TopClassCard from "./TopClassCard";
 
 const TopClasses = () => {
   const [Classes, setClasses] = useState();
   useEffect(() => {
-    fetch("http://localhost:5000/allClasses")
+    fetch("https://criptofia-server.vercel.app/allClasses")
       .then((res) => res.json())
       .then((result) => {
         setClasses(result);

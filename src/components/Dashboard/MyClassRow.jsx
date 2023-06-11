@@ -19,7 +19,7 @@ const MyClassRow = ({ classes, index }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/myClass/classDelete/${id}`, {
+        fetch(`https://criptofia-server.vercel.app/myClass/classDelete/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -56,6 +56,9 @@ const MyClassRow = ({ classes, index }) => {
         </td>
         <td className="p-3">
           <p>{status}</p>
+        </td>
+        <td className="p-3">
+          <p></p>
         </td>
         <td>
           <button>

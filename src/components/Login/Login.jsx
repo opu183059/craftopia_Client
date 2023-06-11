@@ -5,6 +5,7 @@ import { Authcontext } from "../Provider/Authprovider";
 import { useForm } from "react-hook-form";
 import { AiFillEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const { signinwithGoogle, emailLogin, user } = useContext(Authcontext);
@@ -13,6 +14,28 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+
+  // save user
+
+  // const saveUser = (user) => {
+  //   // console.log(user);
+  //   const saveUser = {
+  //     email: user?.email,
+  //     name: user?.displayName,
+  //     photo: user?.photoURL,
+  //     role: "Student",
+  //   };
+  //   fetch(`https://criptofia-server.vercel.app/users/${user?.email}`, {
+  //     method: "PUT",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(saveUser),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => console.log(data));
+  // };
+
   // console.log(import.meta.env.VITE_TEST);
   const {
     register,
@@ -40,6 +63,7 @@ const Login = () => {
     signinwithGoogle()
       .then((result) => {
         console.log(result.user);
+        // saveUser(result.user);
       })
       .catch((error) => {
         console.log(error);
@@ -58,6 +82,9 @@ const Login = () => {
 
   return (
     <div className="pt-24 bg-slate-50 dark:bg-gray-800">
+      <Helmet>
+        <title>Craftopia | Login</title>
+      </Helmet>
       <div className="w-11/12 mx-auto flex flex-col-reverse md:flex-row gap-5 py-6">
         <Slide className="w-full md:w-6/12">
           <img

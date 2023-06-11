@@ -17,7 +17,7 @@ const SelectedClassesRow = ({ classes, index }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(
-          `http://localhost:5000/selectedClasses/selectedClassesDelete/${id}`,
+          `https://criptofia-server.vercel.app/selectedClasses/selectedClassesDelete/${id}`,
           {
             method: "DELETE",
           }

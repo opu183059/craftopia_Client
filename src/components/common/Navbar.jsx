@@ -32,7 +32,7 @@ const Navbar = () => {
   };
   return (
     <>
-      <nav className="fixed w-full shadow-md mx-auto bg-slate-50 dark:bg-gray-800 p-4 z-50">
+      <nav className="fixed w-full shadow-md mx-auto bg-slate-50 dark:bg-blue-950 p-4 z-50">
         <div className="w-11/12 mx-auto flex justify-between items-center">
           <div>
             <button
@@ -43,13 +43,13 @@ const Navbar = () => {
               Menu
             </button>
             {isDropdownOpen && (
-              <div className="absolute mt-4 z-10 py-2 w-48 bg-slate-50 dark:bg-gray-800 rounded-lg shadow-lg">
+              <div className="absolute mt-4 z-10 py-2 w-48 bg-slate-50 dark:bg-blue-950 rounded-lg shadow-lg">
                 <NavLink
                   onClick={toggleDropdown}
                   className={({ isActive }) =>
                     isActive
-                      ? " text-blue-700 dark:text-blue-400 font-bold block px-4 py-2 hover:bg-gray-200"
-                      : "block px-4 py-2 text-gray-800 dark:text-slate-100 dark:hover:text-gray-800 hover:bg-gray-200"
+                      ? " text-blue-700 dark:text-blue-400 font-bold block px-4 py-2 hover:bg-blue-600 hover:text-gray-50"
+                      : "block px-4 py-2 text-gray-800 dark:text-slate-100 dark:hover:text-gray-100 hover:bg-blue-600 hover:text-gray-50"
                   }
                   to="/"
                 >
@@ -60,10 +60,10 @@ const Navbar = () => {
                     onClick={toggleDropdown}
                     className={({ isActive }) =>
                       isActive
-                        ? " text-blue-700 dark:text-blue-400 font-bold block px-4 py-2 hover:bg-gray-200"
-                        : "block px-4 py-2 text-gray-800 dark:text-slate-100 dark:hover:text-gray-800 hover:bg-gray-200"
+                        ? " text-blue-700 dark:text-blue-400 font-bold block px-4 py-2 hover:bg-blue-600 hover:text-gray-50"
+                        : "block px-4 py-2 text-gray-800 dark:text-slate-100 dark:hover:text-gray-100 hover:bg-blue-600 hover:text-gray-50"
                     }
-                    to="/login"
+                    to="/register"
                   >
                     Registration
                   </NavLink>
@@ -72,8 +72,8 @@ const Navbar = () => {
                   onClick={toggleDropdown}
                   className={({ isActive }) =>
                     isActive
-                      ? " text-blue-700 dark:text-blue-400 font-bold block px-4 py-2 hover:bg-gray-200"
-                      : "block px-4 py-2 text-gray-800 dark:text-slate-100 dark:hover:text-gray-800 hover:bg-gray-200"
+                      ? " text-blue-700 dark:text-blue-400 font-bold block px-4 py-2 hover:bg-blue-600 hover:text-gray-50"
+                      : "block px-4 py-2 text-gray-800 dark:text-slate-100 dark:hover:text-gray-100 hover:bg-blue-600 hover:text-gray-50"
                   }
                   to="/instructor"
                 >
@@ -83,8 +83,8 @@ const Navbar = () => {
                   onClick={toggleDropdown}
                   className={({ isActive }) =>
                     isActive
-                      ? " text-blue-700 dark:text-blue-400 font-bold block px-4 py-2 hover:bg-gray-200"
-                      : "block px-4 py-2 text-gray-800 dark:text-slate-100 dark:hover:text-gray-800 hover:bg-gray-200"
+                      ? " text-blue-700 dark:text-blue-400 font-bold block px-4 py-2 hover:bg-blue-600 hover:text-gray-50"
+                      : "block px-4 py-2 text-gray-800 dark:text-slate-100 dark:hover:text-gray-100 hover:bg-blue-600 hover:text-gray-50"
                   }
                   to="/classes"
                 >
@@ -94,8 +94,8 @@ const Navbar = () => {
                   <NavLink
                     className={({ isActive }) =>
                       isActive
-                        ? " text-blue-700 dark:text-blue-400 font-bold block px-4 py-2 hover:bg-gray-200"
-                        : "block px-4 py-2 text-gray-800 dark:text-slate-100 dark:hover:text-gray-800 hover:bg-gray-200"
+                        ? " text-blue-700 dark:text-blue-400 font-bold block px-4 py-2 hover:bg-blue-600 hover:text-gray-50"
+                        : "block px-4 py-2 text-gray-800 dark:text-slate-100 dark:hover:text-gray-100 hover:bg-blue-600 hover:text-gray-50"
                     }
                     to="/dashboard"
                   >
@@ -106,22 +106,22 @@ const Navbar = () => {
                 <div className="darkSwitch md:hidden gap-2">
                   <label
                     htmlFor="Toggle1"
-                    className="inline-flex items-center space-x-4 cursor-pointer text-gray-900 dark:text-white"
+                    className="inline-flex px-4 items-center space-x-4 cursor-pointer text-gray-900 dark:text-white"
                   >
-                    <span>Light</span>
-                    <span className="relative">
+                    <span className="relative border-[2px] dark:border-slate-100 border-black rounded-md p-1">
                       <input
                         onClick={() => setTheme(!theme)}
                         id="Toggle1"
                         type="checkbox"
-                        className="hidden peer"
+                        className="hidden"
                       />
-                      <div className="w-10 h-6 rounded-full shadow-inner dark:bg-gray-400 bg-gray-400 peer-checked:dark:bg-slate-200 peer-checked:bg-slate-200"></div>
-                      <div className="absolute inset-y-0 left-0 w-4 h-4 m-1 rounded-full shadow peer-checked:right-0 peer-checked:left-auto dark:bg-gray-800 bg-gray-800"></div>
+                      {!theme ? (
+                        <BsFillMoonFill size={20}></BsFillMoonFill>
+                      ) : (
+                        <BsFillSunFill size={20}></BsFillSunFill>
+                      )}
                     </span>
-                    <span>Dark</span>
                   </label>
-                  <BsPersonCircle size={30}></BsPersonCircle>
                 </div>
               </div>
             )}
@@ -144,7 +144,7 @@ const Navbar = () => {
                     <img
                       src={user.photoURL}
                       alt=""
-                      className="w-9 h-9 rounded-full mr-2"
+                      className="w-9 h-9 rounded-full border-blue-600 border-2 mr-2"
                     />
                   </div>
                 ) : (
@@ -152,7 +152,7 @@ const Navbar = () => {
                 )}
                 <button
                   onClick={handleLogout}
-                  className="bg-transparent hover:bg-blue-700 text-blue-600 hover:text-white rounded shadow hover:shadow-lg py-1 px-3 border border-blue-600 hover:border-transparent"
+                  className="bg-transparent hover:bg-blue-700 text-blue-600 dark:text-blue-100 hover:text-white rounded shadow hover:shadow-lg py-1 px-3 border border-blue-600 dark:border-blue-400 hover:border-transparent"
                 >
                   Logout
                 </button>
@@ -160,7 +160,7 @@ const Navbar = () => {
             ) : (
               <Link
                 to={"/login"}
-                className="bg-transparent hover:bg-blue-700 text-blue-600 hover:text-white rounded shadow hover:shadow-lg py-1 px-3 border border-blue-600 hover:border-transparent"
+                className="bg-transparent hover:bg-blue-700 text-blue-600 dark:text-blue-100 hover:text-white rounded shadow hover:shadow-lg py-1 px-3 border border-blue-600 dark:border-blue-400 hover:border-transparent"
               >
                 login
               </Link>

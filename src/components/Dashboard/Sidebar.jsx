@@ -1,5 +1,4 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { GrLogout } from "react-icons/gr";
 import { AiOutlineBars, AiOutlineHome } from "react-icons/ai";
 import { BiLogOutCircle } from "react-icons/bi";
 import { useContext, useState } from "react";
@@ -44,8 +43,11 @@ const Sidebar = () => {
         <div className="text-gray-950 dark:text-gray-50">
           <div>
             <div className="mt-3">
+              <p className="font-akaya cursor-default text-3xl mx-2 mb-2">
+                Craftopia
+              </p>
               <img
-                className="border-2 w-24 h-24 mx-2 rounded-lg"
+                className="border-2 mt-4 w-24 h-24 mx-2 rounded-lg"
                 src={user?.photoURL}
                 alt=""
                 referrerPolicy="no-referrer"

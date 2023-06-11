@@ -13,10 +13,11 @@ const AllClassesRow = ({ classdata, index }) => {
     available,
     image,
     status,
+    student,
   } = classdata || {};
   const [Apbtn, setApbtn] = useState(false);
   const [Dnbtn, setDnbtn] = useState(false);
-
+  const remaining = available - student;
   const Approve = (id) => {
     setApbtn(true),
       Swal.fire({
@@ -27,7 +28,7 @@ const AllClassesRow = ({ classdata, index }) => {
     const currentUser = {
       status: "Approved",
     };
-    return fetch(`http://localhost:5000/classApprove/${id}`, {
+    return fetch(`https://criptofia-server.vercel.app/classApprove/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -45,7 +46,7 @@ const AllClassesRow = ({ classdata, index }) => {
     const currentUser = {
       status: "Denied",
     };
-    return fetch(`http://localhost:5000/classApprove/${id}`, {
+    return fetch(`https://criptofia-server.vercel.app/classApprove/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -62,8 +63,8 @@ const AllClassesRow = ({ classdata, index }) => {
         </td>
         <td className="p-3">
           <div className="avatar rounded">
-            <div className="mask mask-squircle w-12 h-12">
-              <img src={image} alt="" />
+            <div className="">
+              <img src={image} alt="" className="w-10 h-10 rounded-lg" />
             </div>
           </div>
         </td>
@@ -77,7 +78,7 @@ const AllClassesRow = ({ classdata, index }) => {
           <p>{instructoremail}</p>
         </td>
         <td className="p-3">
-          <p>{available}</p>
+          <p>{remaining}</p>
         </td>
         <td className="p-3">
           <p>{price}</p>
@@ -112,7 +113,7 @@ const AllClassesRow = ({ classdata, index }) => {
           >
             Denied
           </button>
-          <button className="bg-transparent hover:bg-blue-700 text-blue-600 hover:text-white rounded shadow hover:shadow-lg py-1 px-3 border border-blue-600 hover:border-transparent">
+          <button className="bg-transparent hover:bg-blue-700 text-blue-600 dark:text-blue-100 hover:text-white rounded shadow hover:shadow-lg py-1 px-3 border border-blue-600 dark:border-blue-400 hover:border-transparent">
             Feedback
           </button>
         </td>

@@ -21,6 +21,7 @@ import SelectedClass from "./components/Dashboard/SelectedClass.jsx";
 import TermsAndCondition from "./components/common/TermsAndCondition.jsx";
 import InstructorUpdateClass from "./components/Dashboard/InstructorUpdateClass.jsx";
 import MyEnrolledClasses from "./components/Dashboard/MyEnrolledClasses.jsx";
+import DashboardHome from "./components/Dashboard/DashboardHome.jsx";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
     ),
     children: [
       {
+        path: "/dashboard",
+        element: <DashboardHome></DashboardHome>,
+      },
+      {
         path: "/dashboard/allusers",
         element: <Allusers></Allusers>,
       },
@@ -83,7 +88,7 @@ const router = createBrowserRouter([
         path: "/dashboard/myclass/updateclass/:id",
         element: <InstructorUpdateClass></InstructorUpdateClass>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/classSearch/${params.id}`),
+          fetch(`https://criptofia-server.vercel.app/classSearch/${params.id}`),
       },
       {
         path: "/dashboard/selectedClasses",

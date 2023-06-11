@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Authcontext } from "../Provider/Authprovider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const InstructorAddClass = () => {
   const { user } = useContext(Authcontext);
@@ -45,7 +46,7 @@ const InstructorAddClass = () => {
           status: "pending",
           student: 36,
         };
-        fetch("http://localhost:5000/addClass", {
+        fetch("https://criptofia-server.vercel.app/addClass", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(classData),
@@ -75,6 +76,9 @@ const InstructorAddClass = () => {
 
   return (
     <section className="p-6 bg-gray-800 text-gray-50">
+      <Helmet>
+        <title>Craftopia | Add Class</title>
+      </Helmet>
       <form
         onSubmit={addClass}
         noValidate=""

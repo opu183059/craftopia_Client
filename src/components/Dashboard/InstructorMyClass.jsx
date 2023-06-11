@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Authcontext } from "../Provider/Authprovider";
 import MyClassRow from "./MyClassRow";
+import { Helmet } from "react-helmet";
 
 const InstructorMyClass = () => {
   const { user } = useContext(Authcontext);
@@ -9,7 +10,7 @@ const InstructorMyClass = () => {
   const [noDataFound, setnoDataFound] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myClass/${user?.email}`)
+    fetch(`https://criptofia-server.vercel.app/myClass/${user?.email}`)
       .then((res) => res.json())
       .then((result) => {
         setmyClass(result);
@@ -23,6 +24,9 @@ const InstructorMyClass = () => {
 
   return (
     <div className="pt-10">
+      <Helmet>
+        <title>Craftopia | My Class</title>
+      </Helmet>
       <div className="w-11/12 p-2 mx-auto sm:p-4 dark:text-gray-100">
         <div className="overflow-x-auto">
           <table className="min-w-full">
@@ -35,6 +39,7 @@ const InstructorMyClass = () => {
                 <th className="p-3">Enroled</th>
                 <th className="p-3">Available</th>
                 <th className="p-3">Status</th>
+                <th className="p-3">Feedback</th>
                 <th className="p-3">Edit</th>
                 <th className="p-3">Delete</th>
               </tr>

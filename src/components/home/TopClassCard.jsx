@@ -45,7 +45,7 @@ const TopClassCard = ({ classData }) => {
         </div>
         <button
           onClick={select}
-          className={`bg-transparent hover:bg-blue-700 text-blue-600 hover:text-white rounded shadow hover:shadow-lg py-1 px-3 border border-blue-600 hover:border-transparent`}
+          className={`bg-transparent hover:bg-blue-700 text-blue-600 dark:text-blue-100 hover:text-white rounded shadow hover:shadow-lg py-1 px-3 border border-blue-600 dark:border-blue-400 hover:border-transparent`}
         >
           Select
         </button>

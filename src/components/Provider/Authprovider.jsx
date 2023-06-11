@@ -20,7 +20,9 @@ const Authprovider = ({ children }) => {
   const [role, setRole] = useState(null);
 
   const getRoleFromServer = async (email) => {
-    const response = await fetch(`http://localhost:5000/usermail/${email}`);
+    const response = await fetch(
+      `https://criptofia-server.vercel.app/usermail/${email}`
+    );
     const user = await response.json();
     return user?.role;
   };

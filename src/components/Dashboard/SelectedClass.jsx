@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Authcontext } from "../Provider/Authprovider";
 import SelectedClassesRow from "./SelectedClassesRow";
+import { Helmet } from "react-helmet";
 
 const SelectedClass = () => {
   const { user } = useContext(Authcontext);
@@ -8,7 +9,7 @@ const SelectedClass = () => {
   const [noDataFound, setnoDataFound] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/selectedClasses/${user?.email}`)
+    fetch(`https://criptofia-server.vercel.app/selectedClasses/${user?.email}`)
       .then((res) => res.json())
       .then((result) => {
         setmySelectedClasses(result);
@@ -22,6 +23,9 @@ const SelectedClass = () => {
 
   return (
     <div className="pt-20">
+      <Helmet>
+        <title>Craftopia | Selected Classes</title>
+      </Helmet>
       <div className="w-11/12 p-2 mx-auto sm:p-4 dark:text-gray-100">
         <div className="overflow-x-auto">
           <table className="min-w-full">

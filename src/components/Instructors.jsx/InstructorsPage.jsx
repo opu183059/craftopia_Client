@@ -1,12 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import InstructorPageRow from "./InstructorPageRow";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 const InstructorsPage = () => {
   // const [instructor, setInstructor] = useState();
 
   // useEffect(() => {
-  //   fetch("http://localhost:5000/instructor")
+  //   fetch("https://criptofia-server.vercel.app/instructor")
   //     .then((res) => res.json())
   //     .then((result) => {
   //       setInstructor(result);
@@ -16,7 +17,9 @@ const InstructorsPage = () => {
   const { data: instructor = [] } = useQuery({
     queryKey: ["instructor"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:5000/instructor");
+      const res = await axios.get(
+        "https://criptofia-server.vercel.app/instructor"
+      );
       // console.log(res.data);
       return res.data;
     },
@@ -24,6 +27,9 @@ const InstructorsPage = () => {
 
   return (
     <div className="pt-24 min-h-screen">
+      <Helmet>
+        <title>Craftopia | Instructors</title>
+      </Helmet>
       <div className="w-11/12 mx-auto flex md:flex-row flex-col">
         <img
           className="rounded-xl mt-5"
