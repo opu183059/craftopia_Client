@@ -19,6 +19,7 @@ const SelectedClass = () => {
         }
       });
   }, [mySelectedClasses]);
+
   return (
     <div className="pt-20">
       <div className="container p-2 mx-auto sm:p-4 dark:text-gray-100">
@@ -28,11 +29,9 @@ const SelectedClass = () => {
               <tr className="text-left">
                 <th className="p-3">#</th>
                 <th className="p-3">Image</th>
-                <th className="p-3">Name</th>
+                <th className="p-3">Class Name</th>
+                <th className="p-3">Ins Name</th>
                 <th className="p-3">Price</th>
-                <th className="p-3">Enroled</th>
-                <th className="p-3">Available</th>
-                <th className="p-3">Status</th>
                 <th className="p-3">Action</th>
               </tr>
             </thead>

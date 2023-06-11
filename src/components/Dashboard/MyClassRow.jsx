@@ -19,7 +19,7 @@ const MyClassRow = ({ classes, index }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/classDelete/${id}`, {
+        fetch(`http://localhost:5000/myClass/classDelete/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -66,7 +66,10 @@ const MyClassRow = ({ classes, index }) => {
         </td>
         <td>
           <button onClick={() => delletClass(_id)}>
-            <BsFillTrash3Fill size={23}></BsFillTrash3Fill>
+            <BsFillTrash3Fill
+              size={23}
+              className="hover:text-red-600"
+            ></BsFillTrash3Fill>
           </button>
         </td>
       </tr>

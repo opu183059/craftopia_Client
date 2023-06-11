@@ -121,7 +121,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="py-6 text-sm text-center dark:text-gray-400">
-        © 2023 <a href="#">TinyZoo</a>, All rights reserved.
+        © 2023 <a href="#">CarftoPia</a>, All rights reserved.
       </div>
     </footer>
   );

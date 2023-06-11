@@ -3,10 +3,13 @@ import { Fade, Slide } from "react-awesome-reveal";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Authcontext } from "../Provider/Authprovider";
 import { useForm } from "react-hook-form";
+import { AiFillEye } from "react-icons/ai";
+import { AiFillEyeInvisible } from "react-icons/ai";
 
 const Login = () => {
   const { signinwithGoogle, emailLogin, user } = useContext(Authcontext);
   const [errMgs, setErrMgs] = useState("");
+  const [showpass, setShowpass] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -49,6 +52,10 @@ const Login = () => {
     }
   }, [user]);
 
+  const show = () => {
+    setShowpass(!showpass);
+  };
+
   return (
     <div className="pt-24 bg-slate-50 dark:bg-gray-800">
       <div className="container mx-auto flex flex-col-reverse md:flex-row gap-5 py-6">
@@ -59,6 +66,7 @@ const Login = () => {
             alt="Phone image"
           />
         </Slide>
+
         <Fade delay={500} className="w-full md:w-6/12">
           <div className="md:w-10/12 mx-auto w-full p-8 space-y-3 rounded-xl bg-blue-800 dark:bg-blue-950 text-gray-100 dark:text-gray-100">
             <h1 className="text-2xl font-bold text-center">Login</h1>
@@ -76,7 +84,6 @@ const Login = () => {
                   id="email"
                   className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder=" "
-                  required
                 />
                 <label
                   htmlFor="email"
@@ -84,24 +91,42 @@ const Login = () => {
                 >
                   Email
                 </label>
+                {errors.email && (
+                  <span className="text-red-500">Email is required</span>
+                )}
               </div>
               <div className="space-y-1 text-sm">
                 <div className="relative z-0 w-full mb-6 group">
                   <input
                     {...register("password", { required: true })}
-                    type="password"
+                    type={showpass ? "password" : "text"}
                     name="password"
                     id="password"
                     className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" "
-                    required
                   />
+                  <span
+                    className="absolute right-0 top-3 cursor-pointer"
+                    onClick={() => {
+                      show();
+                    }}
+                  >
+                    {showpass ? (
+                      <AiFillEye size={22}></AiFillEye>
+                    ) : (
+                      <AiFillEyeInvisible size={22}></AiFillEyeInvisible>
+                    )}
+                  </span>
                   <label
                     htmlFor="password"
                     className="peer-focus:font-medium absolute text-sm text-gray-50 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                   >
                     Password
                   </label>
+
+                  {errors.password && (
+                    <span className="text-red-500">Password is required</span>
+                  )}
                 </div>
               </div>
               <button className="block w-auto rounded-md px-4 py-2 text-center text-slate-100 hover:scale-105 transition-all bg-blue-600 hover:border-blue-600 border border-blue-950 ">

@@ -52,10 +52,10 @@ const Banner = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="flex flex-col md:flex-row items-center">
+          <div className="flex flex-col md:flex-row-reverse items-center">
             <div className="w-full md:w-6/12">
               <img
-                className="w-auto rounded-lg p-5 md:p-20"
+                className="w-auto rounded-2xl p-5 md:p-20"
                 src="https://i.ibb.co/m5cF5DW/handmade-art-and-craft.jpg"
                 alt=""
               />

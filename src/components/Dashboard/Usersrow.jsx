@@ -29,7 +29,7 @@ const Usersrow = ({ user, index }) => {
     }).then((res) => res.json());
   };
   const makeAdmin = (email) => {
-    console.log("clicked" + email);
+    // console.log("clicked" + email);
     setAbtn(true),
       Swal.fire({
         icon: "success",
@@ -49,7 +49,6 @@ const Usersrow = ({ user, index }) => {
   };
 
   const DeleteUser = (email) => {
-    // console.log(email);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
