@@ -4,7 +4,7 @@ import { Authcontext } from "../Provider/Authprovider";
 import { Navigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
-const Studentroute = ({ children }) => {
+const Adminroute = ({ children }) => {
   const { role, loading } = useContext(Authcontext);
   if (loading) {
     return (
@@ -14,19 +14,19 @@ const Studentroute = ({ children }) => {
       </div>
     );
   }
-  if (role == "Student") {
+  if (role == "Admin") {
     return children;
   }
 
-  if (role != "Student") {
+  if (role != "Admin") {
     Swal.fire({
       icon: "warning",
       title: "Warning, unauthorised access",
-      text: "You are not student, so you can not visit this",
+      text: "You are not Admin, so you can not visit this",
     });
   }
 
   return <Navigate to="/dashboard"></Navigate>;
 };
 
-export default Studentroute;
+export default Adminroute;
