@@ -51,7 +51,10 @@ const Extrasection = () => {
           <img src="https://i.ibb.co/SyVgQYg/Quilled-flowers-sample-quilling-picture.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://i.ibb.co/t2C6HQJ/nature-crafts.jpg" />
+          <img
+            src="https://i.ibb.co/t2C6HQJ/nature-crafts.jpg"
+            className="flex items-center justify-center"
+          />
         </SwiperSlide>
         <SwiperSlide>
           <img src="https://i.ibb.co/ZVkr676/istockphoto-519362488-612x612.jpg" />

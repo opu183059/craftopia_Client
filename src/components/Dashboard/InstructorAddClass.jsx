@@ -44,7 +44,7 @@ const InstructorAddClass = () => {
           description,
           image: data.data.display_url,
           status: "pending",
-          student: 36,
+          student: 0,
         };
         fetch("https://criptofia-server.vercel.app/addClass", {
           method: "POST",

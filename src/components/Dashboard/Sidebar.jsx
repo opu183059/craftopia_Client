@@ -1,6 +1,13 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { AiOutlineBars, AiOutlineHome } from "react-icons/ai";
-import { BiLogOutCircle } from "react-icons/bi";
+import {
+  AiOutlineBars,
+  AiOutlineHome,
+  AiOutlineUsergroupAdd,
+} from "react-icons/ai";
+import { BiLogOutCircle, BiSelectMultiple } from "react-icons/bi";
+import { LuFolderEdit } from "react-icons/lu";
+import { BsFillCollectionFill, BsWindowPlus } from "react-icons/bs";
+import { SiGoogleclassroom } from "react-icons/si";
 import { useContext, useState } from "react";
 import { Authcontext } from "../Provider/Authprovider";
 const Sidebar = () => {
@@ -64,8 +71,6 @@ const Sidebar = () => {
               </p>
             </div>
           </div>
-
-          {/* Nav Items */}
         </div>
 
         <div>
@@ -75,21 +80,23 @@ const Sidebar = () => {
               <NavLink
                 to="/dashboard/allusers"
                 className={({ isActive }) =>
-                  `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-blue-800 rounded-lg ${
+                  `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-blue-800 hover:text-gray-50 rounded-lg ${
                     isActive ? "bg-blue-800  text-white" : " "
                   }`
                 }
               >
+                <AiOutlineUsergroupAdd className="mr-4"></AiOutlineUsergroupAdd>
                 All Users
               </NavLink>
               <NavLink
                 to="/dashboard/classes"
                 className={({ isActive }) =>
-                  `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-blue-800  rounded-lg ${
+                  `flex items-center px-4 py-2 mt-5 hover:text-gray-50 transition-colors duration-300 transform  hover:bg-blue-800  rounded-lg ${
                     isActive ? "bg-blue-800  text-white" : " "
                   }`
                 }
               >
+                <LuFolderEdit className="mr-4"></LuFolderEdit>
                 Manage Class
               </NavLink>
             </>
@@ -99,21 +106,23 @@ const Sidebar = () => {
               <NavLink
                 to="/dashboard/addClass"
                 className={({ isActive }) =>
-                  `flex items-center px-4 py-2 mt-5 rounded-lg transition-colors duration-300 transform  hover:bg-blue-800  ${
+                  `flex items-center px-4 py-2 mt-5 rounded-lg transition-colors duration-300 transform hover:text-gray-50 hover:bg-blue-800  ${
                     isActive ? "bg-blue-800  text-white" : " "
                   }`
                 }
               >
+                <BsWindowPlus className="mr-4"></BsWindowPlus>
                 Add a class
               </NavLink>
               <NavLink
                 to="/dashboard/myclass"
                 className={({ isActive }) =>
-                  `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-blue-800 rounded-lg ${
+                  `flex items-center px-4 py-2 mt-5 hover:text-gray-50 transition-colors duration-300 transform  hover:bg-blue-800 rounded-lg ${
                     isActive ? "bg-blue-800  text-white" : " "
                   }`
                 }
               >
+                <BsFillCollectionFill className="mr-4"></BsFillCollectionFill>
                 My Classes
               </NavLink>
             </>
@@ -123,21 +132,23 @@ const Sidebar = () => {
               <NavLink
                 to="/dashboard/selectedClasses"
                 className={({ isActive }) =>
-                  `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-blue-800  rounded-lg ${
+                  `flex items-center px-4 py-2 mt-5 hover:text-gray-50 transition-colors duration-300 transform  hover:bg-blue-800  rounded-lg ${
                     isActive ? "bg-blue-800  text-white" : " "
                   }`
                 }
               >
+                <BiSelectMultiple className="mr-4"></BiSelectMultiple>
                 My Selected Classes
               </NavLink>
               <NavLink
                 to="/dashboard/enroledClasses"
                 className={({ isActive }) =>
-                  `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-blue-800 rounded-lg ${
+                  `flex items-center px-4 py-2 mt-5 hover:text-gray-50 transition-colors duration-300 transform  hover:bg-blue-800 rounded-lg ${
                     isActive ? "bg-blue-800  text-white" : " "
                   }`
                 }
               >
+                <SiGoogleclassroom className="mr-4"></SiGoogleclassroom>
                 My Enrolled Classes
               </NavLink>
             </>
@@ -145,14 +156,14 @@ const Sidebar = () => {
 
           <Link
             to={"/"}
-            className="flex w-full items-center px-4 py-2 mt-5  hover:bg-blue-800 text-white rounded-lg transition-colors duration-300 transform"
+            className="flex w-full items-center px-4 py-2 mt-5  hover:bg-blue-800 text-black hover:text-gray-50 dark:text-gray-50 rounded-lg transition-colors duration-300 transform"
           >
             <AiOutlineHome></AiOutlineHome>
             <span className="mx-4 font-medium">Home</span>
           </Link>
           <button
             onClick={handleLogout}
-            className="flex w-full items-center px-4 py-2 mt-5 hover:bg-blue-800 text-white rounded-lg transition-colors duration-300 transform"
+            className="flex w-full items-center px-4 py-2 mt-5 hover:bg-blue-800 text-black dark:text-gray-50 rounded-lg transition-colors duration-300 transform hover:text-gray-50"
           >
             <BiLogOutCircle></BiLogOutCircle>
             <span className="mx-4 font-medium">Logout</span>

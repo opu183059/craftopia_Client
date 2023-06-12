@@ -51,7 +51,7 @@ const InstructorUpdateClass = () => {
       <Helmet>
         <title>Craftopia | Update Class</title>
       </Helmet>
-      <section className="p-6 bg-gray-800 text-gray-900 dark:text-gray-50">
+      <section className="p-6 bg-gray-800 dark:bg-gray-950 text-gray-900 dark:text-gray-50">
         <form
           onSubmit={handleSubmit(onSubmit)}
           noValidate=""
@@ -75,7 +75,7 @@ const InstructorUpdateClass = () => {
                   {...register("classname")}
                   id="classname"
                   type="text"
-                  className="h-9 ps-3 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-400 dark:border-gray-700 dark:text-gray-900"
+                  className="h-9 ps-3 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-400 dark:border-gray-700 text-gray-900 dark:text-gray-900"
                 />
               </div>
 
@@ -89,7 +89,7 @@ const InstructorUpdateClass = () => {
                   {...register("sellerName")}
                   id="instructorName"
                   type="text"
-                  className="w-full h-9 ps-3 rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-400 dark:border-gray-700 dark:text-gray-900"
+                  className="w-full h-9 ps-3 rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-400 dark:border-gray-700 text-gray-900 dark:text-gray-900"
                 />
               </div>
 
@@ -103,7 +103,7 @@ const InstructorUpdateClass = () => {
                   {...register("instructoremail")}
                   id="instructoremail"
                   type="email"
-                  className="w-full h-9 ps-3 rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-400 dark:border-gray-700 dark:text-gray-900"
+                  className="w-full h-9 ps-3 rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-400 dark:border-gray-700 text-gray-900 dark:text-gray-900"
                 />
               </div>
               <div className="col-span-full -mt-3 text-sm">
@@ -121,7 +121,7 @@ const InstructorUpdateClass = () => {
                   {...register("price")}
                   id="price"
                   type="text"
-                  className="h-9 ps-3 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-400 dark:border-gray-700 dark:text-gray-900"
+                  className="h-9 ps-3 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-400 dark:border-gray-700 text-gray-900 dark:text-gray-900"
                 />
               </div>
               <div className="col-span-full text-gray-100 sm:col-span-2">
@@ -134,7 +134,7 @@ const InstructorUpdateClass = () => {
                   id="available"
                   type="text"
                   placeholder=""
-                  className="h-9 ps-3 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-400 dark:border-gray-700 dark:text-gray-900"
+                  className="h-9 ps-3 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-400 dark:border-gray-700 text-gray-900 dark:text-gray-900"
                 />
               </div>
               <div className="col-span-full">
@@ -147,7 +147,7 @@ const InstructorUpdateClass = () => {
                   id="description"
                   type="text"
                   placeholder="description"
-                  className="textarea w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-400 dark:border-gray-700 text-gray-100 dark:text-gray-900"
+                  className="textarea w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-400 dark:border-gray-700 text-gray-900 dark:text-gray-900"
                 />
               </div>
               <div className="col-span-full w-full text-right mt-3">

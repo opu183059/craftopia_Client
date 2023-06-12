@@ -13,8 +13,8 @@ const MeetTeam = () => {
             <div className="flex space-x-6">
               <img
                 alt=""
-                className="flex-1 flex-shrink-0 object-cover h-56 mb-4 bg-center rounded-sm dark:bg-gray-500"
-                src="https://source.unsplash.com/240x320/?man?0"
+                className="flex-1 flex-shrink-0 object-cover h-40 w-52 md:h-56 mb-4 bg-center rounded-sm dark:bg-gray-500"
+                src="https://i.ibb.co/x6C5DnJ/OIP-5.jpg"
               />
               <div className="flex flex-col">
                 <h4 className="text-xl font-semibold">OPU Zaman</h4>
@@ -71,11 +71,11 @@ const MeetTeam = () => {
             <div className="flex space-x-6">
               <img
                 alt=""
-                className="flex-1 flex-shrink-0 object-cover h-56 mb-4 bg-center rounded-sm dark:bg-gray-500"
-                src="https://source.unsplash.com/240x320/?portrait?1"
+                className="flex-1 flex-shrink-0 object-cover h-40 w-52 md:h-56 mb-4 bg-center rounded-sm dark:bg-gray-500"
+                src="https://i.ibb.co/71tRJfm/OIP-4.jpg"
               />
               <div className="flex flex-col">
-                <h4 className="text-xl font-semibold">Tarannum</h4>
+                <h4 className="text-xl font-semibold">Musfiqurr</h4>
                 <p className="text-sm dark:text-gray-400">Director</p>
                 <div className="flex mt-2 space-x-2">
                   <a
@@ -129,8 +129,8 @@ const MeetTeam = () => {
             <div className="flex space-x-6">
               <img
                 alt=""
-                className="flex-1 flex-shrink-0 object-cover h-56 mb-4 bg-center rounded-sm dark:bg-gray-500"
-                src="https://source.unsplash.com/240x320/?portrait?2"
+                className="flex-1 flex-shrink-0 object-cover h-40 w-52 md:h-56 mb-4 bg-center rounded-sm dark:bg-gray-500"
+                src="https://i.ibb.co/ZS3N2jJ/OIP-3.jpg"
               />
               <div className="flex flex-col">
                 <h4 className="text-xl font-semibold">TPU Zaman</h4>
@@ -187,8 +187,8 @@ const MeetTeam = () => {
             <div className="flex space-x-6">
               <img
                 alt=""
-                className="flex-1 flex-shrink-0 object-cover h-56 mb-4 bg-center rounded-sm dark:bg-gray-500"
-                src="https://source.unsplash.com/240x320/?portrait?3"
+                className="flex-1 flex-shrink-0 object-cover h-40 w-52 md:h-56 mb-4 bg-center rounded-sm dark:bg-gray-500"
+                src="https://i.ibb.co/N17xPbM/OIP-2.jpg"
               />
               <div className="flex flex-col">
                 <h4 className="text-xl font-semibold">Tamim IQ</h4>
