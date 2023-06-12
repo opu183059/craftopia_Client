@@ -153,7 +153,7 @@ const Sidebar = () => {
               </NavLink>
             </>
           )}
-
+          {/* {!role && (<p>You loged in direct from the</p>)} */}
           <Link
             to={"/"}
             className="flex w-full items-center px-4 py-2 mt-5  hover:bg-blue-800 text-black hover:text-gray-50 dark:text-gray-50 rounded-lg transition-colors duration-300 transform"
