@@ -11,7 +11,7 @@ const Privateroute = ({ children }) => {
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
-        <div className="w-10 h-10 border-b-8 border-r-4 rounded-full animate-spin dark:border-blue-700"></div>
+        <div className="w-10 h-10 border-b-8 border-r-4 rounded-full animate-spin border-blue-700"></div>
         <p className="font-bold text-xl text-blue-700 ms-2">Loading....</p>
       </div>
     );
@@ -22,7 +22,7 @@ const Privateroute = ({ children }) => {
   if (!user) {
     Swal.fire({
       icon: "warning",
-      title: "Oops...",
+      title: "Unauthorised",
       text: "You have to login to access this",
     });
   }

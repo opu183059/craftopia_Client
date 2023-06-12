@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import AllClassesRow from "./AllClassesRow";
 import { Helmet } from "react-helmet";
 

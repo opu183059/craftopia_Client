@@ -22,9 +22,6 @@ import TermsAndCondition from "./components/common/TermsAndCondition.jsx";
 import InstructorUpdateClass from "./components/Dashboard/InstructorUpdateClass.jsx";
 import MyEnrolledClasses from "./components/Dashboard/MyEnrolledClasses.jsx";
 import DashboardHome from "./components/Dashboard/DashboardHome.jsx";
-import Studentroute from "./components/Privateroute/Studentroute.jsx";
-import Adminroute from "./components/Privateroute/Adminroute.jsx";
-import Instructorroute from "./components/Privateroute/Instructorroute.jsx";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -73,35 +70,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/allusers",
-        element: (
-          <Adminroute>
-            <Allusers></Allusers>
-          </Adminroute>
-        ),
+        element: <Allusers></Allusers>,
       },
       {
         path: "/dashboard/classes",
-        element: (
-          <Adminroute>
-            <Classes></Classes>
-          </Adminroute>
-        ),
+        element: <Classes></Classes>,
       },
       {
         path: "/dashboard/addClass",
-        element: (
-          <Instructorroute>
-            <InstructorAddClass></InstructorAddClass>
-          </Instructorroute>
-        ),
+        element: <InstructorAddClass></InstructorAddClass>,
       },
       {
         path: "/dashboard/myclass",
-        element: (
-          <Instructorroute>
-            <InstructorMyClass></InstructorMyClass>
-          </Instructorroute>
-        ),
+        element: <InstructorMyClass></InstructorMyClass>,
       },
       {
         path: "/dashboard/myclass/updateclass/:id",
@@ -111,19 +92,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/selectedClasses",
-        element: (
-          <Studentroute>
-            <SelectedClass></SelectedClass>
-          </Studentroute>
-        ),
+        element: <SelectedClass></SelectedClass>,
       },
       {
         path: "/dashboard/enroledClasses",
-        element: (
-          <Studentroute>
-            <MyEnrolledClasses></MyEnrolledClasses>
-          </Studentroute>
-        ),
+        element: <MyEnrolledClasses></MyEnrolledClasses>,
       },
     ],
   },
