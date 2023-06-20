@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import { BsFillTrash3Fill } from "react-icons/bs";
+// import { BsFillTrash3Fill } from "react-icons/bs";
 
 // eslint-disable-next-line react/prop-types
 const AllClassesRow = ({ classdata, index }) => {
@@ -18,33 +18,25 @@ const AllClassesRow = ({ classdata, index }) => {
   const [Apbtn, setApbtn] = useState(false);
   const [Dnbtn, setDnbtn] = useState(false);
   const remaining = available - student;
-  const Approve = (id) => {
-    setApbtn(true),
-      Swal.fire({
-        icon: "success",
-        title: "Approved",
-        text: "Approved Successfully",
-      });
+
+  useEffect(() => {
+    if (status == "Approved") {
+      setApbtn(true);
+      setDnbtn(false);
+    } else {
+      setDnbtn(true);
+      setApbtn(false);
+    }
+  }, [status]);
+
+  const Approve = (id, Status) => {
+    Swal.fire({
+      icon: "success",
+      title: `${Status}`,
+      text: `The Class is ${Status}`,
+    });
     const currentUser = {
-      status: "Approved",
-    };
-    return fetch(`https://criptofia-server.vercel.app/classApprove/${id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(currentUser),
-    }).then((res) => res.json());
-  };
-  const Deny = (id) => {
-    setDnbtn(true),
-      Swal.fire({
-        icon: "success",
-        title: "Denied",
-        text: "Classes Denied",
-      });
-    const currentUser = {
-      status: "Denied",
+      status: Status,
     };
     return fetch(`https://criptofia-server.vercel.app/classApprove/${id}`, {
       method: "PUT",
@@ -95,14 +87,14 @@ const AllClassesRow = ({ classdata, index }) => {
                 : "hover:bg-blue-700"
             } hover:bg-blue-700 text-blue-600 hover:text-white rounded shadow hover:shadow-lg py-1 px-3 border border-blue-600 hover:border-transparent`}
             onClick={() => {
-              Approve(_id);
+              Approve(_id, "Approved");
             }}
           >
             Approve
           </button>
           <button
             onClick={() => {
-              Deny(_id);
+              Approve(_id, "Denied");
             }}
             disabled={Dnbtn}
             className={`bg-transparent ${
@@ -117,14 +109,14 @@ const AllClassesRow = ({ classdata, index }) => {
             Feedback
           </button>
         </td>
-        <td>
+        {/* <td>
           <button>
             <BsFillTrash3Fill
               size={20}
               className="hover:text-red-600"
             ></BsFillTrash3Fill>
           </button>
-        </td>
+        </td> */}
       </tr>
     </>
   );

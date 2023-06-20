@@ -145,6 +145,7 @@ const Navbar = () => {
                       src={user.photoURL}
                       alt=""
                       className="w-9 h-9 rounded-full border-blue-600 border-2 mr-2"
+                      referrerPolicy="no-referrer"
                     />
                   </div>
                 ) : (

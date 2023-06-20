@@ -9,6 +9,7 @@ import {
   signOut,
 } from "firebase/auth";
 import app from "../../firebase/firebase.config";
+import axios from "axios";
 
 export const Authcontext = createContext(null);
 const auth = getAuth(app);
@@ -43,12 +44,25 @@ const Authprovider = ({ children }) => {
 
   //   signout
   const logout = () => {
+    localStorage.removeItem("accesss-token");
     return signOut(auth);
   };
 
   useEffect(() => {
     const unsubscrive = onAuthStateChanged(auth, (curentUser) => {
       setUser(curentUser);
+      // console.log(curentUser);
+      if (curentUser) {
+        axios
+          .post("https://criptofia-server.vercel.app/jwt", {
+            email: curentUser?.email,
+          })
+          .then((data) => {
+            localStorage.setItem("accesss-token", data.data.token);
+          });
+      } else {
+        localStorage.removeItem("accesss-token");
+      }
       setLoading(false);
     });
     return () => {

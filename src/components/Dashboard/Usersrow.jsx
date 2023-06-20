@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { BsFillTrash3Fill } from "react-icons/bs";
 
@@ -9,35 +9,25 @@ const Usersrow = ({ user, index }) => {
   const [ibtn, setIbtn] = useState(false);
   const [abtn, setAbtn] = useState(false);
 
-  const makeInstructor = (email) => {
-    // console.log("clicked" + email);
-    setIbtn(true),
-      Swal.fire({
-        icon: "success",
-        title: "Congratulations",
-        text: "The person is Instructor now",
-      });
+  useEffect(() => {
+    if (role == "Instructor") {
+      setIbtn(true);
+      setAbtn(false);
+    } else {
+      setAbtn(true);
+      setIbtn(false);
+    }
+  }, [role]);
+
+  const makeInstructor = (email, roles) => {
+    // setIbtn(true),
+    Swal.fire({
+      icon: "success",
+      title: "Congratulations",
+      text: `The person is ${roles} now`,
+    });
     const currentUser = {
-      role: "Instructor",
-    };
-    return fetch(`https://criptofia-server.vercel.app/users/${email}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(currentUser),
-    }).then((res) => res.json());
-  };
-  const makeAdmin = (email) => {
-    // console.log("clicked" + email);
-    setAbtn(true),
-      Swal.fire({
-        icon: "success",
-        title: "Congratulations",
-        text: "The person is Admin now",
-      });
-    const currentUser = {
-      role: "Admin",
+      role: roles,
     };
     return fetch(`https://criptofia-server.vercel.app/users/${email}`, {
       method: "PUT",
@@ -66,7 +56,7 @@ const Usersrow = ({ user, index }) => {
           .then((data) => {
             console.log(data);
             if (data.deletedCount > 0) {
-              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+              Swal.fire("Deleted!", "User has been Removed", "success");
             }
           });
       }
@@ -98,7 +88,7 @@ const Usersrow = ({ user, index }) => {
               ibtn ? "hover:bg-red-700 bg-red-700" : "hover:bg-blue-700"
             }  text-blue-600 hover:text-white rounded shadow hover:shadow-lg py-1 px-3 border border-blue-600 hover:border-transparent`}
             onClick={() => {
-              makeInstructor(email);
+              makeInstructor(email, "Instructor");
             }}
           >
             Instructor
@@ -109,7 +99,7 @@ const Usersrow = ({ user, index }) => {
               abtn ? "hover:bg-red-700 bg-red-700" : "hover:bg-blue-700"
             } hover:bg-blue-700 text-blue-600 hover:text-white rounded shadow hover:shadow-lg py-1 px-3 border border-blue-600 hover:border-transparent`}
             onClick={() => {
-              makeAdmin(email);
+              makeInstructor(email, "Admin");
             }}
           >
             Admin

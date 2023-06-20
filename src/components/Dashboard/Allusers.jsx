@@ -26,30 +26,43 @@ const Allusers = () => {
       <Helmet>
         <title>Craftopia | All Users</title>
       </Helmet>
-      <div className="w-auto p-2 mx-auto sm:p-4 dark:text-gray-100">
-        <div className="overflow-x-auto">
-          <table className="min-w-full">
-            <thead className="dark:bg-gray-700">
-              <tr className="text-left">
-                <th className="p-3">ID</th>
-                <th className="p-3">Photo</th>
-                <th className="p-3">Name</th>
-                <th className="p-3">Email</th>
-                <th className="p-3">Role</th>
-                <th className="p-3">Change Role</th>
-              </tr>
-            </thead>
-            <tbody>
-              {newUser?.map((user, index) => (
-                <Usersrow user={user} key={user._key} index={index}></Usersrow>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <h1 className="text-red-700 text-center font-semibold text-lg mt-5">
-        {noUserFound}
-      </h1>
+
+      {newUser && Array.isArray(newUser) && newUser.length > 0 ? (
+        <>
+          <div className="w-auto p-2 mx-auto sm:p-4 dark:text-gray-100">
+            <div className="overflow-x-auto">
+              <table className="min-w-full">
+                <thead className="dark:bg-gray-700">
+                  <tr className="text-left">
+                    <th className="p-3">ID</th>
+                    <th className="p-3">Photo</th>
+                    <th className="p-3">Name</th>
+                    <th className="p-3">Email</th>
+                    <th className="p-3">Role</th>
+                    <th className="p-3">Change Role</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {newUser?.map((user, index) => (
+                    <Usersrow
+                      user={user}
+                      key={user._key}
+                      index={index}
+                    ></Usersrow>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <h1 className="text-red-700 text-center font-semibold text-lg mt-5">
+            {noUserFound}
+          </h1>
+        </>
+      ) : (
+        <h1 className="text-red-700 text-center font-semibold text-lg mt-5">
+          No Data
+        </h1>
+      )}
     </div>
   );
 };

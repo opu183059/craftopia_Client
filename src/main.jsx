@@ -103,11 +103,11 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <Authprovider>
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
-      </QueryClientProvider>
-    </Authprovider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <Authprovider>
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+  </Authprovider>
+  // </React.StrictMode>
 );
