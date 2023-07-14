@@ -15,9 +15,9 @@ const MainLayout = () => {
         <title>Craftopia | Home</title>
       </Helmet>
       <Banner></Banner>
+      <Details></Details>
       <About></About>
       <TopClasses></TopClasses>
-      <Details></Details>
       <Instructor></Instructor>
       <Extrasection></Extrasection>
       <MeetTeam></MeetTeam>

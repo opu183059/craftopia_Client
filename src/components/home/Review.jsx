@@ -33,13 +33,13 @@ const Review = () => {
       >
         <SwiperSlide>
           <div className="flex h-full justify-center items-center">
-            <div className="w-96 relative mx-auto bg-blue-100 p-8 rounded-xl">
+            <div className="w-96 relative mx-auto bg-blue-100 dark:bg-blue-800 p-8 rounded-xl">
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Photo_portrait_PP.jpg/800px-Photo_portrait_PP.jpg"
                 alt=""
                 className="absolute z-50 -top-12 w-24 h-24 rounded-full border-2 shadow-xl"
               />
-              <div className="absolute text-right right-8 -top-4 bg-blue-100 px-4 py-1 rounded-lg shadow-md">
+              <div className="absolute text-right right-8 -top-4 bg-blue-100 px-4 py-1 rounded-lg shadow-md dark:bg-blue-800">
                 <h2 className="font-bold md:text-xl">Akther uz zaman</h2>
                 <p className="md:text-sm text-xs">CEO tinyzoo</p>
               </div>
@@ -55,13 +55,13 @@ const Review = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div className="flex h-full justify-center items-center">
-            <div className="w-96 relative mx-auto bg-blue-100 p-8 rounded-xl">
+            <div className="w-96 relative mx-auto bg-blue-100 dark:bg-blue-800 p-8 rounded-xl">
               <img
                 src="https://s2.dmcdn.net/u/2UDzF1ZmTfcVG8PAP/200x200"
                 alt=""
                 className="absolute z-50 -top-12 w-24 h-24 rounded-full border-2 shadow-xl"
               />
-              <div className="absolute text-right right-8 -top-4 bg-blue-100 px-4 py-1 rounded-lg shadow-md">
+              <div className="absolute text-right right-8 -top-4 bg-blue-100 px-4 py-1 rounded-lg shadow-md dark:bg-blue-800">
                 <h2 className="font-bold text-xl">Sheikh Rashid</h2>
                 <p className="text-sm">Businessman</p>
               </div>
@@ -77,13 +77,13 @@ const Review = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div className="flex h-full justify-center items-center">
-            <div className="w-96 relative mx-auto bg-blue-100 p-8 rounded-xl">
+            <div className="w-96 relative mx-auto bg-blue-100 dark:bg-blue-800 p-8 rounded-xl">
               <img
                 src="https://media.istockphoto.com/id/635978276/photo/im-happy-to-share-this-message.jpg?s=612x612&w=0&k=20&c=HwvMLR3EFk6iuZLco73JnFrGi748FouSWYT2zkSOihw="
                 alt=""
                 className="absolute z-50 -top-12 w-24 h-24 rounded-full border-2 shadow-xl"
               />
-              <div className="absolute text-right right-8 -top-4 bg-blue-100 px-4 py-1 rounded-lg shadow-md">
+              <div className="absolute text-right right-8 -top-4 bg-blue-100 px-4 py-1 rounded-lg shadow-md dark:bg-blue-800">
                 <h2 className="font-bold text-xl">Daviud Jacson</h2>
                 <p className="text-sm">Developer tinyzoo</p>
               </div>
@@ -99,13 +99,13 @@ const Review = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div className="flex h-full justify-center items-center">
-            <div className="w-96 relative mx-auto bg-blue-100 p-8 rounded-xl">
+            <div className="w-96 relative mx-auto bg-blue-100 dark:bg-blue-800 p-8 rounded-xl">
               <img
                 src="https://s2.dmcdn.net/u/2UDzF1ZmTfcVG8PAP/200x200"
                 alt=""
                 className="absolute z-50 -top-12 w-24 h-24 rounded-full border-2 shadow-xl"
               />
-              <div className="absolute text-right right-8 -top-4 bg-blue-100 px-4 py-1 rounded-lg shadow-md">
+              <div className="absolute text-right right-8 -top-4 bg-blue-100 px-4 py-1 rounded-lg shadow-md dark:bg-blue-800">
                 <h2 className="font-bold text-xl">Sheikh Rashid</h2>
                 <p className="text-sm">Businessman</p>
               </div>

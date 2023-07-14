@@ -4,7 +4,7 @@ const MeetTeam = () => {
       <section className="py-6 dark:bg-gray-950 dark:text-gray-100">
         <div className="w-11/12 p-4 mx-auto space-y-16 sm:p-10">
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold leading-none sm:text-5xl">
+            <h3 className="text-2xl font-bold font-akaya text-center leading-none sm:text-5xl text-blue-700 dark:text-blue-500">
               Meet our team
             </h3>
             <p className="max-w-2xl dark:text-gray-400"></p>

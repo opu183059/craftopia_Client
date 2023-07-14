@@ -15,11 +15,11 @@ const Instructor = () => {
   return (
     <div className="my-5">
       <div className="min-h-screen pt-24">
-        <h1 className="font-akaya text-5xl text-center mb-5">
-          Top Instructors
+        <h1 className="font-akaya text-5xl text-center mb-5 text-blue-700 dark:text-blue-500">
+          Popular Instructors
         </h1>
-        <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
-          {instructor?.slice(0, 6)?.map((instructor) => (
+        <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-4 gap-5">
+          {instructor?.slice(0, 8)?.map((instructor) => (
             <InstructorCard
               instructor={instructor}
               key={instructor._id}

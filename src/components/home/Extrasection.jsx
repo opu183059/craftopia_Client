@@ -23,7 +23,9 @@ const Extrasection = () => {
 
   return (
     <div className="extrasection">
-      <h1 className="font-akaya text-5xl text-center mb-5">Gallery</h1>
+      <h1 className="font-akaya text-5xl text-center mb-5 text-blue-700 dark:text-blue-500">
+        Gallery
+      </h1>
       <Swiper
         effect={"coverflow"}
         grabCursor={true}
