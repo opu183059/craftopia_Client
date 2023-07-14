@@ -10,17 +10,18 @@ const Details = () => {
           <div className="md:w-7/12 mx-auto md:mx-0 w-10/12 flex items-center gap-4 p-4 bg-gray-50 border-2 border-blue-500 rounded-lg shadow-lg shadow-blue-200 hover:shadow-blue-300 z-20">
             <div className="left">
               <img
-                src="https://www.craftykitcompany.co.uk/cdn/shop/articles/Blog_posts_7_1024x768.png?v=1628687000"
+                src="https://www.thebestideasforkids.com/wp-content/uploads/2021/01/Crafts-for-Kids-Kits.jpg"
                 alt=""
                 className="md:w-40 md:h-40"
               />
             </div>
             <div className="right text-left">
               <h1 className="text-blue-600 font-semibold md:text-xl">
-                Submit Your Tutor Request
+                Search the class
               </h1>
               <p className="text-sm">
-                Fill out all the required fields and submit your request.
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum,
+                quam?
               </p>
             </div>
           </div>
@@ -30,18 +31,18 @@ const Details = () => {
           <div className="md:w-7/12 w-10/12 flex items-center gap-4 p-4 bg-gray-50 border-2 border-blue-500 rounded-lg shadow-lg shadow-blue-200 hover:shadow-blue-300 z-10 mx-auto md:mx-0">
             <div className="left">
               <img
-                src="https://www.craftykitcompany.co.uk/cdn/shop/articles/Blog_posts_7_1024x768.png?v=1628687000"
+                src="https://www.hobbycraft.co.uk/dw/image/v2/BHCG_PRD/on/demandware.static/-/Sites-hobbycraft-uk-master/default/dw33e98ff0/images/Ideas/kids/main/ideas_main_five-cheap-and-easy-crafts-for-kids.jpg?sw=680&q=85"
                 alt=""
                 className="md:w-40 md:h-40"
               />
             </div>
             <div className="right text-left">
               <h1 className="text-blue-600 font-semibold md:text-xl">
-                Get the Maximum 5 Best Tutor CVs
+                Select and pay
               </h1>
               <p className="text-sm">
-                Within 48 hours, you'll get up to 5 CVs of the best tutors who
-                applied to your posted job.
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Officiis a
               </p>
             </div>
           </div>
@@ -58,11 +59,10 @@ const Details = () => {
             </div>
             <div className="right text-left">
               <h1 className="text-blue-600 font-semibold md:text-xl">
-                Select the Best One & Start Learning
+                Enjoy it on Dashboard
               </h1>
               <p className="text-sm">
-                Select a tutor from the shortlist and take trial classes to
-                confirm your tutor.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
               </p>
             </div>
           </div>
