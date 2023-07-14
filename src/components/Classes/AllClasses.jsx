@@ -2,6 +2,7 @@ import ClassesCard from "./ClassesCard";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet";
+import { useEffect } from "react";
 
 const AllClasses = () => {
   // const [Classes, setClasses] = useState();
@@ -29,6 +30,10 @@ const AllClasses = () => {
       return res.data;
     },
   });
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="min-h-screen pt-24">

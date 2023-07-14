@@ -66,3 +66,7 @@
 .extrasection .autoplay-progress {
   display: none;
 }
+
+.review .swiper-pagination {
+  display: none;
+}

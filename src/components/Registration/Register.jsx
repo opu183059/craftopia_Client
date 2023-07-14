@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Fade, Slide } from "react-awesome-reveal";
 import { Link, useNavigate } from "react-router-dom";
 import { Authcontext } from "../Provider/Authprovider";
@@ -104,8 +104,12 @@ const Register = () => {
   const show = () => {
     setShowpass(!showpass);
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
-    <div className="pt-24 bg-slate-50 dark:bg-gray-800">
+    <div className="pt-24 bg-slate-50 dark:bg-gray-950">
       <Helmet>
         <title>Craftopia | Registration</title>
       </Helmet>

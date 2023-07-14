@@ -14,7 +14,7 @@ const Banner = () => {
     progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
   };
   return (
-    <div>
+    <div className="">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -28,10 +28,10 @@ const Banner = () => {
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
         onAutoplayTimeLeft={onAutoplayTimeLeft}
-        className="mySwiper w-11/12 h-screen"
+        className="mySwiper w-auto h-screen"
       >
         <SwiperSlide>
-          <div className="flex flex-col md:flex-row items-center">
+          <div className="flex flex-col md:flex-row items-center -mt-14">
             <div className="w-full md:w-6/12">
               <img
                 className="w-auto rounded-2xl p-5 md:p-20"
@@ -66,8 +66,7 @@ const Banner = () => {
                 "Discover the joy of art and craft at our school. Immerse
                 yourself in a vibrant community of artists, where creativity
                 knows no bounds.Join our vibrant community, embrace your
-                artistic journey, and let your passion illuminate the world with
-                beauty and expression."
+                artistic journey.
               </p>
             </div>
           </div>
@@ -95,7 +94,7 @@ const Banner = () => {
           </div>
         </SwiperSlide>
 
-        <div className="autoplay-progress w-6" slot="w-11/12-end">
+        <div className="hidden" slot="w-11/12-end">
           <svg viewBox="0 0 48 48" ref={progressCircle}>
             <circle cx="24" cy="24" r="20"></circle>
           </svg>

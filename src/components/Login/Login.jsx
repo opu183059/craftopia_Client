@@ -80,8 +80,12 @@ const Login = () => {
     setShowpass(!showpass);
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div className="pt-24 bg-slate-50 dark:bg-gray-800">
+    <div className="pt-24 bg-slate-50 dark:bg-gray-950">
       <Helmet>
         <title>Craftopia | Login</title>
       </Helmet>

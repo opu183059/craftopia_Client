@@ -20,6 +20,7 @@ const ClassesCard = ({ classData }) => {
         icon: "error",
         title: "Can not select class",
         text: "Please login to select it",
+        footer: '<a href="/login">Goto Login</a>',
       });
       return;
     }

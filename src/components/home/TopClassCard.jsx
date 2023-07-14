@@ -19,13 +19,15 @@ const TopClassCard = ({ classData }) => {
   return (
     <>
       <div
-        className={`max-w-xl p-6 hover:shadow-xl rounded-md shadow-md dark:bg-gray-900 dark:text-gray-50`}
+        className={`max-w-xl p-6 hover:shadow-xl rounded-md shadow-md dark:bg-gray-900 dark:text-gray-50 group`}
       >
-        <img
-          src={image}
-          alt=""
-          className="object-cover object-center w-full rounded-md h-72 dark:bg-gray-500"
-        />
+        <div className="aspect-square w-full relative overflow-hidden rounded-xl">
+          <img
+            src={image}
+            alt=""
+            className="object-cover object-center w-full rounded-md h-72 dark:bg-gray-500 group-hover:scale-110 transition-all"
+          />
+        </div>
         <div className="mt-6 mb-2">
           <h2 className="text-xl font-semibold tracking-wide">{classname}</h2>
           <hr />
