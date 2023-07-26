@@ -8,6 +8,9 @@ Unleash your creativity at our craft teaching school. From quilling to jewelry m
 
 or, https://craftopia-2b729.web.app/
 
+Check Admin Functionality with this account,
+email: admin@admin.com  and  password: Admin$4check
+
 ## Features
 
 - You can Registration and Login
